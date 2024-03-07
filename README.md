@@ -367,9 +367,19 @@ SELECT ao.*
 
 ---
 
+# Case Inensitivity
+
+- `UPPER`/`LOWER` require a functional/function-based index or persisted generated/computed column to be performant, and they are also prone to the [Turkish "I" problem](https://en.wikipedia.org/wiki/Dotted_and_dotless_I_in_computing).
+- `LIKE` ...
+- A collation is the best way to be case-insensitive.
+
+---
+
 # Pagination
 
 Though pagination can be implemented via `OFFSET` & `LIMIT`, this will not be performant if the data is not sorted via indexed columns.
+
+Keyset pagination ...
 
 ---
 
