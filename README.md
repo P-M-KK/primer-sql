@@ -370,8 +370,8 @@ SELECT ao.*
 # Case Inensitivity
 
 - `UPPER`/`LOWER` require a functional/function-based index or persisted generated/computed column to be performant, and they are also prone to the [Turkish "I" problem](https://en.wikipedia.org/wiki/Dotted_and_dotless_I_in_computing).
-- `LIKE` ...
-- A collation is the best way to be case-insensitive.
+- `LIKE`/`ILIKE` ...
+- A collation, whether on the permanent database or column level or the temporary session or query level, is the best way to be case-insensitive.
 
 ---
 
