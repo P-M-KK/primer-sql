@@ -367,6 +367,12 @@ SELECT ao.*
 
 ---
 
+# Pagination
+
+Though pagination can be implemented via `OFFSET` & `LIMIT`, this will not be performant if the data is not sorted via indexed columns.
+
+---
+
 # Hierarchies
 
 - Properties
