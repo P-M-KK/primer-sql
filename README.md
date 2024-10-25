@@ -27,7 +27,7 @@ Many vendors have extensions to SQL, such as T-SQL & PL/SQL, that provide proced
 # Syntax & Logic
 
 Though queries are written in this order:
-```
+```sql
   WITH sub-queries
 SELECT columns
   FROM table/sub-query
@@ -44,7 +44,7 @@ OFFSET n
 ```
 
 They are processed in this order:
-```
+```sql
   WITH    (lazily evaluate sub-queries for later clauses)
   FROM    (for each row in table/sub-query)
        [join op] (combine columns from multiple tables/sub-queries)
@@ -107,7 +107,7 @@ Set Operators combine rows from 2 same-type tables/queries based on equality of 
 - `ROLLUP` creates `COUNT(terms)` levels of super aggregate rows for each `GROUP BY` term based on the order of the terms (one-to-many)
   - `GROUPING(terms)` values will always be in `POW(2, X) - 1`
   - Where this is not available syntactically, it can be emulated via:
-    - ```
+    - ```sql
       SELECT [terms 1 to N], [agg func]()
        GROUP BY [terms 1 to N]
       UNION ALL
@@ -126,14 +126,14 @@ Set Operators combine rows from 2 same-type tables/queries based on equality of 
 
 - `PIVOT` denormalizes rows into columns for 1 metric
   - Where this is not available syntactically, it can be emulated via:
-    - ```
+    - ```sql
       SELECT CASE col WHEN 'col1' THEN val END AS col1
            , CASE col WHEN 'col2' THEN val END AS col2
            -- repeat above for each value in the column being pivoted
       ```
 - `UNPIVOT` normalizes columns of the same metric into rows
   - Where this is not available syntactically, it can be emulated via:
-    - ```
+    - ```sql
       SELECT 'col1' as col, col1 as val
       UNION ALL
       SELECT 'col2' as col, col2 as val
@@ -178,7 +178,7 @@ The window can also be limited dynamically based on offsets from the current row
 - [Ranking](https://en.wikipedia.org/wiki/Ranking#Strategies_for_handling_ties)
   - Standard Competition Ranking = `RANK`
   - Modified Competition Ranking =
-    - ```
+    - ```sql
       SELECT x
            , x_rank
            , x_rank_ordinal
@@ -192,7 +192,7 @@ The window can also be limited dynamically based on offsets from the current row
   - Dense Ranking = `DENSE_RANK`
   - Ordinal Ranking = `ROW_NUMBER`
   - Fractional Ranking =
-    - ```
+    - ```sql
       SELECT x
            , x_rank
            , x_rank_ordinal
@@ -204,7 +204,7 @@ The window can also be limited dynamically based on offsets from the current row
             );
       ```
   - `MODE` is typically not available syntactically & does not preserve ties, but it can be calculated, preserving ties, via: 
-    - ```
+    - ```sql
       SELECT x
            , x_count
         FROM(SELECT x
@@ -221,7 +221,7 @@ The window can also be limited dynamically based on offsets from the current row
       ```
     - Weighted Mode (aka "get the row/group having the highest value")
       - "row" (weight-only) use case:
-        - ```
+        - ```sql
           SELECT x
                , z as z_max
             FROM y
@@ -232,7 +232,7 @@ The window can also be limited dynamically based on offsets from the current row
            ORDER BY x;
           ```
       - "group" use case:
-        - ```
+        - ```sql
           SELECT x
                , x_sum
             FROM(SELECT x
@@ -249,7 +249,7 @@ The window can also be limited dynamically based on offsets from the current row
           ```
 - Absolute Selection (`FIRST_VALUE` & `LAST_VALUE` & `NTH_VALUE`)
   - Aggregate versions of these are typically not available syntactically but can be calculated via:
-    - ```
+    - ```sql
       SELECT z
            , x AS x_first
         FROM(SELECT x
@@ -273,7 +273,7 @@ The window can also be limited dynamically based on offsets from the current row
   - Dynamic Bucket Size & Static Bucket Count (Remainder in First Buckets)
     - Partition = `NTILE(N) OVER (ORDER BY x)`
     - Collation =
-      - ```
+      - ```sql
         SELECT x
              , bucket_num
              , ROW_NUMBER() OVER (PARTITION BY bucket_num ORDER BY x)
@@ -286,7 +286,7 @@ The window can also be limited dynamically based on offsets from the current row
 - Quantile/Percentile (`PERCENTILE_CONT` & `PERCENTILE_DISC`)
   - Median = `PERCENTILE_CONT(0.5)` & `PERCENTILE_DISC(0.5)`
     - Weighted Median
-      - ```
+      - ```sql
         SELECT AVG(val) -- Linear Interpolation to handle ties
           FROM(SELECT val
                     , weight
@@ -301,7 +301,7 @@ The window can also be limited dynamically based on offsets from the current row
 - Cumulative Distribution (`CUME_DIST` & `PERCENT_RANK`)
   - This is the inverse of the Quantile/Percentile
   - Estimating the "[Pareto Joint Ratio](https://en.wikipedia.org/wiki/Pareto_principle)" (top x% of count represents (100-x)% of value) =
-    - ```
+    - ```sql
       /* Linear Interpolation (y = mx + b) is usually accurate enough with sufficient data */
         WITH tbl1 AS (
              SELECT tbl.*
@@ -349,7 +349,7 @@ The window can also be limited dynamically based on offsets from the current row
 
 - [Pareto Front](https://en.wikipedia.org/wiki/Pareto_front) (multi-objective optimization)
 
-```
+```sql
 SELECT ao.*
   FROM a ao
  WHERE NOT EXISTS (
@@ -428,7 +428,7 @@ Keyset pagination ...
 - [Querying](https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL)
 
 Basic querying for data stored in the Adjacent List model:
-```
+```sql
   WITH y_hierarchy AS (
        /* Anchor */
        SELECT id
@@ -449,7 +449,7 @@ SELECT *
 ```
 
 Advanced querying (replicating all of Oracle's `CONNECT BY` features) for data stored in the Adjacency List model:
-```
+```sql
   WITH y_hierarchy AS (
        /* Anchor */
        SELECT id
@@ -484,7 +484,7 @@ SELECT yh.*
 ```
 
 Generating the [Reflexive](https://en.wikipedia.org/wiki/Reflexive_closure), [Symmetric](https://en.wikipedia.org/wiki/Symmetric_closure), & [Transitive Closure](https://en.wikipedia.org/wiki/Transitive_closure) for data stored in the Adjacent List model:
-```
+```sql
   WITH y_hierarchy AS (
        /* Anchor */
        /* Reflexive (A->A) */
@@ -512,6 +512,19 @@ SELECT id_other AS id
      , -level   AS level
   FROM y_hierarchy
  where level != 0; -- prevents duplication of Reflexive Closure
+```
+
+---
+
+# Other Patterns
+
+Flexible Filtering:
+```sql
+SELECT x
+  FROM y
+ WHERE (ParamCol1 IS NULL OR col1 = ParamCol1)
+   AND (ALL(ParamsCol2) IS NULL OR col2 IN ParamsCol2) -- the syntax for multi-value filtering will vary greatly per vendor; "ALL"s behavior for empty collections is important
+   -- repeat above for each column being filtered
 ```
 
 ---
