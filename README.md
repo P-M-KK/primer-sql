@@ -520,7 +520,25 @@ SELECT id_other AS id
 
 # Traps
 
+An inadequate understanding of the relationships between entities can result in mistake in query design, known as traps.
+Traps can also be the result of the data modeling not fully or accurately representing the business, in which case a proper query cannot be written for incorrect or insufficient relationships.
+
 ## Chasm
+
+Given this ERD:
+
+```mermaid
+erDiagram
+    A ||--o{ B: ""
+    B |o..o{ C: ""
+    A ||--o{ C: ""
+```
+
+Join A to B and B to C can exclude some C records that don't related to B.
+Depending upon the nature of the hierarchy in question, there are different solutions.
+Ragged hierarchies are particularly prone to this problem (eg: USA -> [No State] -> Washington, D.C.).
+
+Joining
 
 ...
 
@@ -530,11 +548,11 @@ Given this ERD:
 
 ```mermaid
 erDiagram
-    a ||--o{ b: ""
-    a ||--o{ c: ""
+    A ||--o{ B: ""
+    A ||--o{ C: ""
 ```
 
-Joining both A with both B & C in a single query can yield incorrect results, especially when aggregating. 
+Joining A with both B & C in a single query can yield incorrect results, especially when aggregating. 
 
 ## ...
 
