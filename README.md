@@ -527,6 +527,17 @@ SELECT x
    -- repeat above for each column being filtered
 ```
 
+Basic Cardinality Analysis:
+```sql
+SELECT x, ...
+     , COUNT(1) as c -- x in table scope
+     , COUNT(DISTINCT z) as c -- x in z scope
+  FROM y
+ GROUP BY x, ...
+ ORDER BY c DESC
+        , x, ...
+```
+
 ---
 
 # Resources
