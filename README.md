@@ -22,6 +22,8 @@ Though SQL is divided into DDL (Definition), DQL (Query), DML (Manipulation), & 
 
 Many vendors have extensions to SQL, such as T-SQL & PL/SQL, that provide procedural programming constructs.
 
+Join & Set Operators can easily turn a (unique) [set](https://en.wikipedia.org/wiki/Set_(mathematics)) into a [multiset](https://en.wikipedia.org/wiki/Multiset), so always be aware of multiplicity/cardinality.
+
 ---
 
 # Syntax & Logic
@@ -516,6 +518,30 @@ SELECT id_other AS id
 
 ---
 
+# Traps
+
+## Chasm
+
+...
+
+## Fan
+
+Given this ERD:
+
+```mermaid
+erDiagram
+    a ||--o{ b: ""
+    a ||--o{ c: ""
+```
+
+Joining both A with both B & C in a single query can yield incorrect results, especially when aggregating. 
+
+## ...
+
+...
+
+---
+
 # Other Patterns
 
 Flexible Filtering:
@@ -527,7 +553,7 @@ SELECT x
    -- repeat above for each column being filtered
 ```
 
-Basic Cardinality Analysis:
+Basic Multiplicity Analysis:
 ```sql
 SELECT x, ...
      , COUNT(1) as c -- x in table scope
