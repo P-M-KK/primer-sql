@@ -1,0 +1,1419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<style type="text/css">
+		/* Elements */
+
+		div             {  }
+		div div         { margin-left: 16px; }
+		div div div     { margin-left: 16px; }
+		div div div div { margin-left: 16px; }
+
+		                h1 { font-size: 200%; }
+		div             h1 { font-size: 180%; }
+		div div         h1 { font-size: 160%; }
+		div div div     h1 { font-size: 140%; }
+		div div div div h1 { font-size: 120%; }
+
+		table  { border: 1px solid black; border-collapse: collapse; }
+		th, td { border: 1px solid black; }
+
+
+
+		/* Classes */
+
+		.null { color: silver; }
+
+		.white  { background-color: white;   color: black;  }
+		.gray   { background-color: silver;  color: black;  }
+		.green  { background-color: lime;    color: black;  }
+		.blue   { background-color: #4040C0; color: yellow; }
+		.yellow { background-color: #FFFF80; color: black;  }
+		.red    { background-color: #C04040; color: white;  }
+
+		.free { color: green;   }
+		.both { color: olive;   }
+		.paid { color: darkred; }
+	</style>
+	<title>QlikView Patterns &amp; Practices</title>
+</head>
+<body>
+	<h1><u>QLIKVIEW PATTERNS &amp; PRACTICES</u></h1>
+	<div>
+		<p>
+			<b>Disclaimer:</b> In descending order of use, most of this advice has been derived from
+				Qlik
+					(primarily from their <a href="http://community.qlik.com/community/blogs">official blogs</a>
+					and associated <a href="http://community.qlik.com/community/qlikview/resource-library">resources/documents</a>),
+				and the <a href="http://www.askqv.com/blogs/">Qlikosphere</a>.
+			<br />
+			This document assumes you have at least QlikView 11.2 SR5 and is current to QlikView 11.2 SR9.
+			<br />
+			x
+		</p>
+
+		<h1>Experience Design</h1>
+		<div>
+			<p>Having a consistent and standard layout facilitates user adoption and efficiency.</p>
+
+			<h1>Sheets</h1>
+			<div>
+				<p>
+					Sheets should be designed to look best on the most common display through which the report will be viewed.
+					Also, sheets should be designed to look at least passable on the smallest display through which the report will be viewed.
+					Additionally, be sure to test the web view if a browser is a means by which the report will be viewed.
+					If a sheet cannot be designed to look at least passable on all displays through which it will be viewed, making a separate sheet or report is advised.
+					<br />
+					<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/09/27/one-app-to-rule-them-all">Qlik Design Blog: One App to rule them all</a>
+				</p>
+			</div>
+
+			<h1>Filters</h1>
+			<div>
+				<p>
+					Up to 2 sides of each sheet should have filters, top or bottom AND/OR left or right.
+					Across each sheet, the side(s) used should be consistent, and the same filters should be located in the same place.
+					<br />
+					Since the header is generally larger than the footer, the top side is more suited for filters than the bottom side.
+					Date/Time and other more universal (across multiple or all sheets) filters are well-suited to the top side, since the header does not have as much room to spare as the left or right side, and those filters usually take up little space and are few.
+					<br />
+					Since the size of some charts/tables is dynamic based on the amount of data, the left side is more suited for filters than the right side.
+					Other and sheet-specific filters are best-suited for the left side, since there is plenty of room for them, and those filters are often many.
+					<br />
+					<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/04/25/left-or-right-side-navigation">Qlik Design Blog: Left or Right side navigation?</a>
+				</p>
+			</div>
+
+			<h1>Data Visualization</h1>
+			<div>
+				<p>
+					Undertanding how to best choose, arrange, format, and color the report's metrics, tables, and charts is crucial to developing an effective report.
+					In particular, <a href="http://www.perceptualedge.com/">Stephen Few</a> and <a href="http://www.edwardtufte.com/">Edward Tufte</a> have excellent thoughts on this topic.
+					<ul>
+						<li>History
+							<ul>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/09/20/a-short-history-of-data-visalization-bi">Qlik Design Blog: A short history of Data Visualization & BI</a></li>
+							</ul>
+						</li>
+						<li>Theory
+							<ul>
+								<li>
+									<a href="https://community.qlik.com/blogs/qlikviewdesignblog/2015/06/12/right-chart-for-the-data-and-for-the-device">Qlik Design Blog: The right chart for your data set (and for your device)</a>
+									<ul>
+										<li>
+											<a href="http://www.qlik.com/us/blog/posts/patrik-lundblad/dissecting-how-to-choose-the-right-chart">Qlik Blog: Dissecting How to Choose the Right Chart</a>
+											<ul>
+												<li>
+													<a href="http://extremepresentation.typepad.com/blog/2006/09/choosing_a_good.html">Extreme Presentation: Choosing a good chart</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/01/26/chart-dimensionality">Qlik Design Blog: Chart Dimensionality</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/10/10/when-not-to-average">Qlik Design Blog: When Not to Average</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/25/dimensions-and-measures">Qlik Design Blog: Dimensions and Measures</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/12/10/the-importance-of-data-visualization">Qlik Design Blog: The Importance of Data Visualization</a></li>
+							</ul>
+						</li>
+						<li>Application
+							<ul>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/08/18/recipe-for-a-box-plot">Qlik Design Blog: Recipe for a Box Plot</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/08/13/recipe-for-a-histogram">Qlik Design Blog: Recipe for a Histogram</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/05/09/dislike-gauge-charts-you-may-want-to-give-them-a-second-chance">Qlik Design Blog: Dislike gauge charts? You may want to give them a second chance</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/07/when-being-correct-is-not-always-correct">Qlik Design Blog: When being correct is not always correct</a> (pie charts)</li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/01/31/customizable-straight-table">Qlik Design Blog: Customizable Straight Table</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/01/10/line-charts-tricks">Qlik Design Blog: Line charts tricks: In-Chart Legend</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/08/26/monte-carlo-methods">Qlik Design Blog: Monte Carlo Methods</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/04/30/qlikview-control-chart">Qlik Design Blog: QlikView Control (SPC) Chart</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/18/scatter-chart">Qlik Design Blog: Recipe for a Scatter Chart</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/18/use-of-a-silent-legend">Qlik Design Blog: Use of a Silent Legend</a></li>
+								<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/06/01/recipe-for-gantt-chart">Qlik Design Blog: Recipe for a Gantt chart</a></li>
+
+							</ul>
+						</li>
+					</ul>
+				</p>
+			</div>
+			<!--
+				// ... other features/limitations worth mentioning ...
+				idea: progressive disclosure: <a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/04/12/show-more-show-less-progressive-disclosure-in-business-intelligence">Qlik Design Blog: Show More, Show Less: Progressive Disclosure in Business Intelligence</a>
+					D-A-R
+					drill-down selectons
+					dimension hierarchy
+
+				generic
+					http://community.qlik.com/blogs/qlikviewdesignblog/2015/01/02/some-assembly-required
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/05/10/why-is-the-question-why-important-in-a-design-process
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/11/16/tool-vs-toy
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/06/26/let-the-user-select
+				visual
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/10/31/real-madrid-v-barcelona-fandom-map-why-this-map-is-untruthful
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/10/24/contextualize-your-kpis
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/08/08/a-tip-for-the-type
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/07/25/hierarchy-of-information
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/05/16/human-mind-and-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/05/02/4-pieces-of-basic-design-advice
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/04/11/enhancing-the-user-experience-using-conditional-expressions--part-ii
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/02/28/enhancing-the-user-experience-using-conditional-expressions
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/01/17/pre-attentive-processing-for-dashboard-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/11/29/just-make-it-look-pretty
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/11/mental-models-and-usability-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/09/13/replacing-images-with-geometric-shapes-as-visual-clues
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/05/use-of-hierarchy-in-information-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/06/21/handling-many-tabs-in-qlikview
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/06/07/usability-recommendations
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/15/use-of-icons-in-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/25/popular-data-visualization--intuitive-and-unintuitive
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/05/dashboard-101--creating-a-dashboard
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/08/14/why-it-is-ok-to-scroll
+				mobile
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/08/05/mobile-usability-a-few-guidelines
+				color
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/25/3-color-utilities-that-makes-my-life-easier
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/04/using-rgb-and-argb-to-define-colors
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/08/16/color-codes
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/12/04/colors-in-charts
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/07/12/colour
+				personas
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/16/the-coffee-analogy-of-ux-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/02/14/personas-in-ux-design
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/07/27/how-to-improve-your-design-process-working-with-qlikview
+			-->
+		</div>
+
+		<h1>Sheet Flow</h1>
+		<div>
+			<p>
+				Following a logical sequence of sheets encourages data discovery.
+				If more than 1 Dashboard or 1 Reporting sheet seems beneficial, consider making multiple reports.
+				<br />
+				<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/11/08/dar-methodology">Qlik Design Blog: DAR Methodology</a>
+			</p>
+
+			<h1>1 Dashboard Sheet</h1>
+			<div>
+				<p>
+					This sheet should be first.
+					It should contain the shallowest level of detail, focusing on KPIs (Key Performance Indicators) with few filters (usually just Date/Time filters).
+					The size of text and charts/tables should be fairly large, but the amount of text and the volume and number of charts/tables should be minimal.
+				</p>
+			</div>
+
+			<h1>1+ Analysis Sheet(s)</h1>
+			<div>
+				<p>
+					These sheets should contain a medium level of detail, each focused on drilling down into the data with various charts.
+					They are usually themed around areas of the Dashboard sheet, user roles, or user tasks.
+				</p>
+			</div>
+
+			<h1>1 Reporting Sheet</h1>
+			<div>
+				<p>
+					This sheet should be last.
+					It should contain the deepest level of detail, generally featuring a table showing the full volume of data that enables the user to make their own report by selecting which dimensions and facts they want to see.
+				</p>
+			</div>
+
+			<h1>0/1 Help Sheet(s)</h1>
+			<div>
+				<p>
+					This sheet should be before the Dashboard sheet or after the Reporting Sheet.
+					It should contain meta detail (e.g.: creator, contact, version control info, last refresh date, user name, user role/permissions, etc...) for easy reference but is no substitute for proper documentation.
+					If it would only contain technical details, it can instead be hidden (potentially via user roles/permissions) or it can be excluded and have its content placed in the Load Script to avoid confusing the end users.
+				</p>
+			</div>
+		</div>
+
+		<h1>Version Control</h1>
+		<div>
+			<p>
+				Being able to track, view, and merge changes to files and is incredibly useful, especially when more than 1 person works on the same project.
+				This is just as true with QlikView, but the available options and their respective pros & cons are not immediately obvious.
+				<br />
+				Note that QlikView does not provide any built-in Version Control; it merely exposes itself in a versionable manner, hence the need for actual Version Control Software.
+				Also, pre-existing QlikView reports can be switched to using Version Control with ease.
+				<br />
+				Additionally, QlikView tracks many details (e.g.: last active Load Script tab, etc...) that do not need versioning, so inspect all changes to potentially undo some.
+				This will reduce the "noise" when viewing change history.
+			</p>
+
+			<h1>General 3rd Party Product (e.g.: PRJ Folder)</h1>
+			<div>
+				<p>
+					<b>Required Version Control Software:</b> Any (e.g.: Git, Mercurial, Subversion, Team Foundation Server, etc...)
+					<br />
+					<b>Pros:</b> Free, Flexible, Unified
+					<br />
+					<b>Cons:</b> Manual, Not Supported
+					<br />
+					<b>QlikView Menu(s):</b> None or <i>File &rArr; Export</i> &amp; <i>File &rArr; Import</i>
+					<br />
+					When a |NAME|.qvw file and a |NAME|-prj folder are with the same folder, ...
+					<ul>
+						<li>Saving the QVW file automatically exports to the PRJ folder.
+							<ul>
+								<li>Data is not included in the export (and thus, import), saving space and isolating only what should be versioned.</li>
+							</ul>
+						</li>
+						<li>Opening the QVW file (even if it's a blank or out-of-date QVW) automatically imports from the PRJ folder if the PRJ folder is not empty.</li>
+					</ul>
+					Using the <i>Export Document Layout...</i> & <i>Import Document Layout</i> menu commands accomplishes the same but allows for flexibility in PRJ folder name and location.
+					<ol>
+						<li><a href="http://blogg.sigma.se/en/The-Business-Intelligence-blog/Jonas-Wiklander/Dates/2014/3/Qlikview-and-version-control-part-1/">Sigma: Qlikview and version control, part 1</a></li>
+						<li><a href="http://blogg.sigma.se/en/The-Business-Intelligence-blog/Jonas-Wiklander/Dates/2014/3/Qlikview-and-version-control-part-2/">Sigma: Qlikview and version control, part 2</a></li>
+						<li><a href="http://blogg.sigma.se/en/The-Business-Intelligence-blog/Jonas-Wiklander/Dates/2014/4/Qlikview-and-version-control-part-3/">Sigma: Qlikview and version control, part 3</a></li>
+					</ol>
+				</p>
+			</div>
+
+			<h1>1st Party Product (e.g.: QlikView Source Control Interface)</h1>
+			<div>
+				<p>
+					<b>Required Version Control Software:</b> Subversion, Team Foundation Server 2010 or earlier, or Team Foundation Server 2012 or later with a Server workspace.
+					<br />
+					<b>Pros:</b> Free, Easy, Supported (if having a QlikView license)
+					<br />
+					<b>Cons:</b> Not Unified, Not Supported (if lacking a QlikView license)
+					<br />
+					<b>QlikView Menu(s):</b> <i>File &rArr; Source Control</i>
+					<br />
+					The menu contains many commands:
+					<ul>
+						<li><i>Settings...</i> is for choosing which Version Control Software used and specifying the mapping to it.</li>
+						<li>
+							<i>Add Project to Source Control...</i> exports the project to the chosen Version Control Software at the specific mapping.
+							This only needs to be done once per project.
+						</li>
+						<li>
+							<i>Get Project from Source Control...</i> imports the project from the chosen Version Control Software at the specific mapping.
+							This only needs to be done once per project per location (working copy / branch).
+						</li>
+						<li>
+							<i>Get Latest Version</i> syncs the project with the last committed version.
+							Resolving conflicts may be compulsory if you have pending changes.
+						</li>
+						<li>
+							<i>Check In Pending Changes...</i> commits all pending changes.
+							Resolving conflicts may be compulsory if other changes were committed since you last issued the <i>Get Latest Version</i> menu command.
+						</li>
+						<li><i>Undo Pending Changes...</i> reverts all pending changes.</li>
+					</ul>
+					<a href="http://community.qlik.com/docs/DOC-3424">Qlik: Updated Guide to QlikView and Source Control (TFS & Subversion)</a>
+				</p>
+			</div>
+
+			<h1>Specific 3rd Party Product (e.g.: QVScriptor, Noad EQM4)</h1>
+			<div>
+				<p>
+					<b>Required Version Control Software:</b> QVScriptor or Noad EQM4
+					<br />
+					<b>Pros:</b> Probably Very Easy, Probably Unified, Supported
+					<br />
+					<b>Cons:</b> Cost
+					<br />
+					<b>QlikView Menu(s):</b> ???
+					<br />
+					QVScriptor, in aiming to be a complete solution, has support for version control.
+					<br />
+					I do not have experience with how Noad EQM4 this works, but Benoit Graziani does.
+				</p>
+			</div>
+		</div>
+
+		<h1>Deployment</h1>
+		<div>
+			<p>
+				Though QlikView neither needs nor has a build/publish process, deployment to different environments is usually a need.
+				Along with this, packaging or collecting all the files upon which a report depends is very helpful but not strictly necessary.
+				Note that QlikView does not expose itself 100% to version control, partially intentionally (in the case of variables) and partially unintentionally (I've seen mixed info on this, some of which may be outdated, so just test for yourself and investigate if something seems to have been excluded).
+			</p>
+
+			<h1>By Hand</h1>
+			<div>
+				<p>
+					<b>Pros:</b> Free, Flexible
+					<br />
+					<b>Cons:</b> Very Manual, Not Unified, Not Supported
+					<br />
+					This is the full process that the other methods simplify through consolidation and workarounds.
+					Though far from ideal, it is not a terrible solution if deployments are rare or incremental.
+					<ol>
+						<li>Delete the old folders at the destination, if they exist.</li>
+						<li>Copy the new folders to the destination, adjusting for the environment as necessary.</li>
+						<li>Create the QVW files, if they do not yet exist.
+							<ul>
+								<li>Due to the way security for Qlik Server currently works, the QVW files should never be deleted with regard to deployment unless you want to have to reenter the permissions.</li>
+							</ul>
+						</li>
+						<li>Open the QVW files.</li>
+						<li>Save the QVW files.</li>
+						<li>Close the QVW files.</li>
+						<li>Delete the PRJ folders at the destination to improve performance when opening the QVW files in the future.</li>
+						<li>Reload the QVW files via the Report Architecture Staging Step Scheduling.</li>
+					</ol>
+				</p>
+			</div>
+
+			<h1>General 3rd Party Product (e.g.: IDE Solution/Project)</h1>
+			<div>
+				<p>
+					<b>Pros:</b> Free, Flexible, Unified
+					<br />
+					<b>Cons:</b> Manual, Not Supported
+					<br />
+					By using one of these (e.g.: Visual Studio SLN, Eclipse PROJECT, etc...), an artificial build/publish process is introduced for compiling and automating deployment-specific steps.
+					Since these do not support QlikView specifically, custom configuration and scripts need to be made and adjusted to make best use of this option.
+				</p>
+			</div>
+
+			<h1>1st Party Product (e.g.: Qlik Publisher)</h1>
+			<div>
+				<p>
+					<b>Pros:</b> Probably Very Easy, Maybe Unified, Supported
+					<br />
+					<b>Cons:</b> Cost
+					<br />
+					Being an official product, it is a great asset to deployment.
+					I do not have experience with how this works.
+				</p>
+			</div>
+
+			<h1>Specific 3rd Party Product (e.g.: QVScriptor, Noad EQM4)</h1>
+			<div>
+				<p>
+					<b>Pros:</b> Probably Easy, Probably Unified, Supported
+					<br />
+					<b>Cons:</b> Cost
+					<br />
+					QVScriptor, in aiming to be a complete solution, has support for deployment.
+					<br />
+					I believe Noad EQM4 has deployment support, but I do not know for sure.
+					I do not have experience with how Noad EQM4 works, but Benoit Graziani does.
+				</p>
+			</div>
+		</div>
+
+		<h1>Report Architecture</h1>
+		<div>
+			<p>How a report is structured can greatly impact its maintainability.</p>
+
+			<h1>External Resource Tracking</h1>
+			<div>
+				<p>
+					Certain external resources either are tracked poorly (with regard to the level of tracking a developer or owner would want) in QlikView, and there is often little-to-no ability to document outside of the Load Script.
+					Defining these external resources in a separate file allows them to be more easily tracked and documented.
+					Since QlikView can load from spreadsheets easily, a spreadsheet is a good option.
+				</p>
+
+				<h1>Variable</h1>
+				<div>
+					<p>
+						First of all, a variable should be used any time a given calculation appears twice.
+						If the formula for a variable refers to other variables, it is more clear and less error-prone to place it after the variables it references.
+						<br />
+						QlikView does not yet version variables, so this is necessary for version control.
+					</p>
+				</div>
+
+				<h1>File</h1>
+				<div>
+					<p>
+						While this can certainly be done with the data files, it is primarily for files like images.
+						Images, for instance, are often embedded directly in sheet objects, so having them all defined in 1 place along their intended purpose (in case the file moves and breaks the image) is neater.
+						This also allows for easy association of files, like images, to records, in case they aren't or can't be stored in the data source.
+						<br />
+						<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/05/31/loading-images-into-qlikview">Qlik Design Blog: Loading Images into QlikView</a>
+					</p>
+				</div>
+
+				<h1>Connection String</h1>
+				<div>
+					<p>If having many data sources requiring the CONNECT statement, storing those connection strings in a separate file can be good for organization and maintenance (and avoids cluttering the Shared Scripts if they are used in multiple places).</p>
+				</div>
+			</div>
+
+			<h1>Staging Steps</h1>
+			<div>
+				<p>
+					For more complex reports with varied or incongruous data sources, stage the data from outside of the report itself.
+					A goal is to have as little logic as possible in the report itself.
+					This achieves separation of concerns in what is known as an ETL (Extract, Transform, Load) process.
+					<br />
+					A report can load 1 QVW file and any number of QVD files.
+					Thus, creating QVD files is the primary method of implementing these steps.
+					However, the final step is often best left to a QVW file.
+				</p>
+
+				<h1>ETL Steps</h1>
+				<div>
+					<p>
+						Only use the steps needed, generally 1 step for each concern in the ETL process.
+						<ol>
+							<li>
+								<b>Extract:</b> This is where the data is accessed.
+								Output QVD files.
+								This step can often be reused by other reports.
+							</li>
+							<li>
+								<b>Transform:</b> This is where the data is related and formatted.
+								Output QVD files.
+								Take care in pre-aggregating data, lest discovery be inhibited.
+							</li>
+							<li>
+								<b>Load:</b> This is where the data is combined.
+								Output a QVW file.
+							</li>
+						</ol>
+					</p>
+				</div>
+
+				<h1>Scheduling</h1>
+				<div>
+					<p>
+						Create a job chain on Qlik Server to run the staging steps in dependency order.
+						This job chain often begins with a dummy trigger.
+					</p>
+				</div>
+			</div>
+
+			<h1>Shared Scripts</h1>
+			<div>
+				<p>
+					Another way to eliminate duplication and thus lessen maintenance is to package common Load Script code into separate QVS files for reuse within the Load Script of this or other reports.
+					Always use $(MUST_INCLUDE=[Path\To\Script.qvs]), as $(INCLUDE=[Path\To\Script.qvs]) silently fails if the script does not exist.
+					<br />
+					<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/04/10/the-include-which-you-mustinclude-into-your-toolkit">Qlik Design Blog: The $(Include) which you $(Must_Include) into your toolkit</a>
+				</p>
+			</div>
+		</div>
+
+		<h1>Data Modeling</h1>
+		<div>
+			<p>How the data model is structured can have a significant impact upon QlikView's performance.</p>
+
+			<h1>Galaxy/Constellation Schema</h1>
+			<div>
+				<p>
+					<b>Dimension Tables:</b> 1+
+					<br />
+					<b>Fact Tables:</b> 1+
+					<br />
+					This choice is either a Snowflake or Star Schema (the definitions I have found are either not consistent enough to prove reliable or make no mention of which) involving multiple fact grains/levels (in a hierarchical sense) or types in separate tables.
+					Its suitability is most apparent when facts share multiple (but not all) dimensions.
+					Use as needed, especially instead of mixing fact granularity or fusing unrelated fact types in a fact table.
+				</p>
+			</div>
+
+			<h1>Snowflake Schema</h1>
+			<div>
+				<p>
+					<b>Dimension Tables:</b> 1+, Normalized
+					<br />
+					<b>Fact Tables:</b> 1
+					<br />
+					This choice logically expresses dimensional hierarchies around a single fact grain or type with minimum redundancy.
+				</p>
+			</div>
+
+			<h1>Star Schema</h1>
+			<div>
+				<p>
+					<b>Dimension Tables:</b> 1+, Denormalized
+					<br />
+					<b>Fact Tables:</b> 1
+					<br />
+					This choice is the best for optimal performance with a single fact grain or type, though only necessary for the largest of data sets.
+				</p>
+			</div>
+
+			<h1>No Schema</h1>
+			<div>
+				<p>
+					<b>Dimension Tables:</b> 0
+					<br />
+					<b>Fact Tables:</b> 1+
+					<br />
+					While using 1 table (or 1 table for each fact grain or type) to store all of the data is possible and provides some benefits, the drawbacks far outweigh them. Do not use this, even if your data source uses this schema.
+				</p>
+			</div>
+
+			<ul>
+				<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/01/19/number-of-hops">Qlik Design Blog: A Myth about the Number of Hops</a>
+				<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/29/clarity-vs-speed">Qlik Design Blog: Data Modelling: Clarity vs. Speed</a>
+				<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/22/a-myth-about-countdistinct">Qlik Design Blog: A Myth About COUNT(DISTINCT ...)</a>
+				<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/26/mixed-granularity">Qlik Design Blog: Fact Table with Mixed Granularity</a></li>
+				<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/09/12/to-join-or-not-to-join">Qlik Design Blog: To Join or not to Join</a></li>
+			</ul>
+		</div>
+
+		<h1>Data Connecting</h1>
+		<div>
+			<p>
+				The way QlikView handles connections between sets of data is quite unique, so explanation is necessary.
+				This document does not explain Joins or Unions conceptually in depth, as many other resources do this adequately (such as <a href="http://sqlity.net/en/1146/a-join-a-day-introduction/">SQLity: A Join A Day</a>, noting that some of the details are specific to Microsoft SQL Server).
+				<table>
+					<tr>
+						<th>How many column names match?</th>
+						<th>QlikView performs</th>
+						<th>Condition</th>
+					</tr>
+					<tr>
+						<td>None</td>
+						<td>CROSS JOIN</td>
+						<td>any type of Join is specified</td>
+					</tr>
+					<tr>
+						<td>Some</td>
+						<td>Natural OUTER JOIN</td>
+						<td>none/automatic</td>
+					</tr>
+					<tr>
+						<td>All</td>
+						<td>CONCATENATE</td>
+						<td>none/automatic</td>
+					</tr>
+				</table>
+			</p>
+
+			<h1>Join</h1>
+			<div>
+				<p>
+					<b>Can be thought of as:</b> Adding the columns of a table to another table, potentially adding/removing rows as well.
+					<table>
+						<tr>
+							<th>QlikView Join Type</th>
+							<th>SQL Equivalent</th>
+						</tr>
+						<tr>
+							<td>OUTER JOIN</td>
+							<td>FULL OUTER JOIN &amp; COALESCE([joined table 1].[key], [joined table 2].[key]) AS [key] for each key involved in the join</td>
+						</tr>
+						<tr>
+							<td>RIGHT JOIN</td>
+							<td>RIGHT OUTER JOIN &amp; Left keys not selected</td>
+						</tr>
+						<tr>
+							<td>LEFT JOIN</td>
+							<td>LEFT OUTER JOIN &amp; Right keys not selected</td>
+						</tr>
+						<tr>
+							<td>INNER JOIN</td>
+							<td>INNER JOIN &amp; USING</td>
+						</tr>
+					</table>
+					<s>To prevent unintentional implicit Natural Joins, specify the the desired type of Join and both QUALIFY * and UNQUALIFY [the list of keys on which to join] when joining is desired, and specify just QUALIFY * when joining is not desired.</s>
+					<br />
+					Semi Joins and Anti (Semi) Joins can be simulated with EXISTS([key]) and NOT EXISTS([key]), respectively, AND-ed for each key involved in the type of Outer Join (LEFT, RIGHT, or FULL) and followed by dropping the extra table if not a FULL OUTER JOIN.
+					Using KEEP for Semi Joins may be a simpler alternative.
+					<br />
+					Though SQL and other relational tools default JOIN to INNER JOIN, QlikView defaults JOIN to FULL OUTER JOIN since it is associative.
+					To avoid confusion, do not use just JOIN.
+					<br />
+					QlikView only supports simple Equi-Joins, meaning that it can only join based on equality (i.e.: no >, <, >=, <=, or !=/<>), and every key must match (i.e.: only basic AND logic).
+					<br />
+					<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/05/29/do-you-qualify">Qlik Design Blog: Do you Qualify?</a>
+				</p>
+			</div>
+
+			<h1>Map</h1>
+			<div>
+				<p>
+					<b>Can be thought of as:</b> Adding a column of a table to another table.
+					<br />
+					<b>SQL Equivalent:</b> DECODE, CASE, or scalar subquery
+					<br />
+					Its simplest use case is as a computationally faster alternative to joining to a reference table (or issuing an equivalent scalar subquery) for translating an id/key into a name/title/description, using DECODE or CASE to manually translate values in SQL, or cleansing data.
+					Mapping can also be chained to produce complex translations.
+					<br />
+					Mapping assumes there is a 1:1 or M:1 relationship.
+					Thus, if there is actually a 1:M relationship, it will return the first match it encounters, thinking it is the only one.
+					This is generally not desired behavior, as an aggregation (e.g.: min, max, sum, etc...) is usually desired in a 1:M relationship.
+					To account for this, GROUP BY the Key, and aggregate the Value in your MAPPING LOAD.
+					To avoid glitches, use ONLY as the aggregation for all 1:1 relationships not enforced by a DB.
+					<br />
+					Some (usually those with little SQL experience) advocate for mapping to the exclusion of left and right joins due to the benefits (e.g.: speed, no potential for row duplication in a 1:M relationship, etc...), but they ignore the drawbacks (e.g.: silent failure on map name typo, potential for inconsistent results in a 1:M relationship, need for multiple mapping tables or a string-concatenated mapping table if mapping than 1 column for a given key, etc...).
+					Both exist in QlikView for a reason, and the tool appropriate to the circumstance should be used.
+					<ul>
+						<li>
+							<i>APPLYMAP</i> is the primary mapping function.
+							When it does not find a match, it returns the 2nd parameter unless you specify a 3rd parameter.
+							While returning the 2nd parameter can be useful while creating a report, it is rarely if ever desired in a finished report, so be sure to include the 3rd parameter.
+						</li>
+						<li>
+							<i>MAP ... USING</i> is a shortcut for reusing the same map.
+							Be sure to <i>UNMAP</i> when done.
+						</li>
+						<li>
+							<i>MAPSUBSTRING</i> is like a complex "Find &amp; Replace", mapping every occurrence of the value it finds within the supplied key.
+							It can be useful for mapping a composite key if unable to map when it was still individual key fields.
+						</li>
+					</ul>
+					<ul>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/12/13/mapping-and-not-the-geographical-kind">Qlik Design Blog: Mapping ... and not the geographical kind</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/09/18/one-favorite-function-applymap">Qlik Design Blog: Don't join - use Applymap instead</a></li>
+					</ul>
+				</p>
+			</div>
+
+			<h1>Concatenate</h1>
+			<div>
+				<p>
+					<b>Can be thought of as:</b> Adding the rows of a table to another table.
+					<br />
+					<b>SQL Equivalent:</b> UNION ALL
+					<br />
+					To prevent unintentional implicit concatenation, specify CONCATENATE([table]) when concatenation is desired, and specify NOCONCATENATE when concatenation is not desired.
+					<br />
+					As for other set manipulation statements, QlikView does not have built-in UNION DISTINCT, INTERSECT, or MINUS/EXCEPT support.
+					UNION DISTINCT can be accomplished using NOT EXISTS([column]) AND-ed for every column, but INTERSECT and MINUS/EXCEPT are not easily possible.
+				</p>
+			</div>
+
+			<h1>Generic</h1>
+			<div>
+				<p>
+					<b>Can be thought of as:</b> Denormalization. Flipping dimensions into columns across the diagonal.
+					<br />
+					<b>SQL Equivalent:</b> PIVOT
+					<br />
+					Especially is gotten from a NoSQL database (e.g.: entity-key-attribute-value), data is often in too normalized (usually 6th Normal Form).
+					GENERIC can fix this, making such data more useful for analysis by bringing it to at most 5th Normal Form.
+					<br />
+					<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/31/generic">Qlik Design Blog: The Generic Load</a>
+				</p>
+			</div>
+
+			<h1>Crosstable</h1>
+			<div>
+				<p>
+					<b>Can be thought of as:</b> Normalization. Flipping columns into dimensions across the diagonal.
+					<br />
+					<b>SQL Equivalent:</b> UNPIVOT
+					<br />
+					Especially if gotten from a spreadsheet, data is often too denormalized (anything below 3rd Normal Form).
+					CROSSTABLE can fix this, making such data more useful for analysis by bringing it to at least 3rd Normal Form.
+					Note that the data can be displayed in a pivot table as if it was still denormalized.
+					<br />
+					Due to being single-threaded, this is known for being slow on anything but simple datasets.
+					So, do this in SQL, if possible.
+					<br />
+					<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/24/crosstable">Qlik Design Blog: The Crosstable Load</a>
+				</p>
+			</div>
+			<!--
+				transformation
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/02/05/populating-a-sparsely-populated-field
+					http://community.qlik.com/blogs/qlikviewdesignblog/2012/09/25/how-to-rename-fields
+				connecting
+					http://community.qlik.com/blogs/qlikviewdesignblog/2014/01/14/merging-data
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/06/25/circular-references
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/06/18/the-table-viewer
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/05/17/concatenate-vs-link-table
+					http://community.qlik.com/blogs/qlikviewdesignblog/2013/04/16/synthetic-keys
+						the problem with nulls and composite VS concatenated keys
+					manually-specified joins (and maybe unions) actually do it instead of the auto-link in table viewer...
+					Generic keys: http://community.qlik.com/docs/DOC-3451
+				IntervalMatch and Slowly Changing Dimensions: http://community.qlik.com/docs/DOC-4310
+				http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/10/wildcard-data-loading-blah
+			-->
+		</div>
+
+		<h1>Data Processing</h1>
+		<div>
+			<p>x</p>
+
+			<h1>Filtering</h1>
+			<div>
+				<p>
+					QlikView's offers an innovative approach to filtering through its "<span class="green">Green</span>, <span class="white">White</span>, <span class="gray">Gray</span>(, <span class="blue">Blue</span>, <span class="yellow">Yellow</span>, <span class="red">Red</span>)" color scheme.
+					<table>
+						<tr>
+							<th>Any Filter</th>
+							<th colspan="3">This Filter</th>
+							<th colspan="4">This Filter's Values</th>
+							<th rowspan="3">Comments</th>
+						</tr>
+						<tr>
+							<th rowspan="2">Has Selections?</th>
+							<th rowspan="2">Has Selections?</th>
+							<th rowspan="2">Is Locked?</th>
+							<th rowspan="2">Is Showing Alts?</th>
+							<th rowspan="2">State</th>
+							<th colspan="2">Substate</th>
+							<th rowspan="2">Color</th>
+						</tr>
+						<tr>
+							<th>Selected</th>
+							<th>Excluded</th>
+						</tr>
+						<tr>
+							<td>EITHER</td>
+							<td>No</td>
+							<td class="null">CAN'T</td>
+							<td>EITHER</td>
+							<td>Possible</td>
+							<td class="null">N/A</td>
+							<td class="null">N/A</td>
+							<td class="white">White</td>
+							<td class="null">NONE</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>No</td>
+							<td class="null">CAN'T</td>
+							<td>EITHER</td>
+							<td>Excluded</td>
+							<td class="null">N/A</td>
+							<td>EITHER</td>
+							<td class="gray">Gray</td>
+							<td class="null">NONE</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>No</td>
+							<td>EITHER</td>
+							<td>Selected</td>
+							<td>Or/And</td>
+							<td class="null">N/A</td>
+							<td class="green">Green</td>
+							<td>
+								If any newly-selected values were <span class="gray">Gray</span>, the selected values in all unlocked filters that are responsible for (or, contribute to) excluding the formerly-<span class="gray">Gray</span> selected values become <span class="gray">Gray</span>.
+								This assumes the intention is to change selections, since otherwise the selections yield no data.
+							</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>EITHER</td>
+							<td>Selected</td>
+							<td>Or/And</td>
+							<td class="null">N/A</td>
+							<td class="blue">Blue</td>
+							<td>The selected values of a locked filter cannot change and do not visually indicate the logic mode (OR/AND).</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>EITHER</td>
+							<td>EITHER</td>
+							<td>Selected</td>
+							<td>Not</td>
+							<td class="null">N/A</td>
+							<td class="red">Red</td>
+							<td>Only available in AND mode.</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>EITHER</td>
+							<td>No</td>
+							<td>Excluded</td>
+							<td class="null">N/A</td>
+							<td>EITHER</td>
+							<td class="gray">Gray</td>
+							<td class="null">NONE</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>EITHER</td>
+							<td>Yes</td>
+							<td>Excluded</td>
+							<td class="null">N/A</td>
+							<td>Possible</td>
+							<td class="yellow">Yellow</td>
+							<td>
+								This reduces the process of switching selections within an unlocked filter from 2 steps to 1 step.
+								<br />
+								<a href="http://community.qlik.com/docs/DOC-4318">Quick Intelligence: The Power of Yellow</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Yes</td>
+							<td>Yes</td>
+							<td>EITHER</td>
+							<td>Yes</td>
+							<td>Excluded</td>
+							<td class="null">N/A</td>
+							<td>Excluded</td>
+							<td class="gray">Gray</td>
+							<td class="null">NONE</td>
+						</tr>
+					</table>
+				</p>
+
+				<h1>Selection Cardinality</h1>
+				<div>
+					<p>
+						A filter can have 0, 1, or many selections (0 is the same as if all values were selected).
+						It is possible to enforce a "1 and only 1" selection requirement, which is useful in certain cases where no or multiple selections would not make sense for the data or presentation.
+					</p>
+				</div>
+
+				<h1>Logic Mode</h1>
+				<div>
+					<p>
+						Though QlikView's filtering is powerful and designed for the most common use case, it is nonetheless limited.
+						<br />
+						Within a single column, multiple selections operate with OR logic (Year = 2015 OR 2014).
+						It is possible to switch to AND logic for individual columns, but this requires an extra linking table to be defined.
+						<br />
+						Across multiple columns, multiple selections operate with AND logic (Year = 2015 AND Month = Jan).
+						It is possible to switch to OR logic for collections of columns, but this is a difficult and intensive process using advanced Set Analysis functionality.
+						Additionally, OR logic for collections of columns is generally needed far less often than AND logic for individual columns.
+						<br />
+						These alternate logic modes change (or even reduce) the information expressed by the QlikView color scheme.
+						<ul>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/17/and-or">Qlik Design Blog: AND and OR</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/19/and-mode">Qlik Design Blog: AND-Mode</a></li>
+							<li><a href="http://www.qlikfix.com/2013/10/23/and-or-mode-selections-in-qlikview/">Qlik Fix: Or-mode selections between list boxes</a></li>
+						</ul>
+					</p>
+				</div>
+
+				<h1>Focusing (a.k.a.: Contextual Brushing / Coordinated Highlighting)</h1>
+				<div>
+					<p>
+						In QlikView, clicking on a data point in a chart or table selects (or, filters on) the dimension values responsible for that fact.
+						In other tools like Tableau, this action instead highlights (or, focuses on) those dimension values.
+						QlikView can mimic this and other focusing behaviors, though circumventing QlikView's default behavior may be confusing to end users.
+						<ul>
+							<li><a href="http://qlikviewcookbook.com/recipes/download-info/focus-not-filter/">QlikView Cookbook: Focus not Filter</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/02/07/line-chart-tricks-part-two">Qlik Design Blog: Line Chart tricks: Displaying what's important</a></li>
+							<li><a href="http://community.qlik.com/message/426698">Qlik Community: Non-associated Part of Pie Outgrayed</a></li>
+							<li><a href="http://www.perceptualedge.com/articles/visual_business_intelligence/coordinated_highlighting_in_context.pdf">Perceptual Edge: Coordinated Highlighting in Context: Bringing Multidimensional Connections to Light</a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+			<h1>Analytics</h1>
+			<div>
+				<p>x</p>
+
+				<h1>Set Analysis</h1>
+				<div>
+					<p>
+						Set Analysis is like an advanced form of filtering, enabling developers to build complex functionality.
+						<ul>
+							<li><a href="https://community.qlik.com/blogs/qlikviewdesignblog/2016/02/16/implicit-set-operators">Qlik Design Blog: Implicit Set Operators</a></li>
+							<li><a href="https://community.qlik.com/blogs/qlikviewdesignblog/2015/10/19/excluding-values-in-set-analysis">Qlik Design Blog: Excluding values in Set Analysis</a></li>
+							<li><a href="https://community.qlik.com/blogs/qlikviewdesignblog/2015/10/12/why-is-it-called-set-analysis">Qlik Design Blog: Why is it called Set Analysis?</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/02/16/set-analysis">Qlik Design Blog: A Primer on Set Analysis</a></li>
+							<li><a href="http://tools.qlikblog.at/SetAnalysisWizard/QlikView-SetAnalysis_Wizard_and_Generator.aspx?sa=">Qlik Blog: Set Analysis Wizard for QlikView</a></li>
+						</ul>
+					</p>
+				</div>
+
+				<h1>Alternate States</h1>
+				<div>
+					<p>
+						Being able to compare 2 selections against each other can be very useful for gaining insight into the data.
+						Alternate States are a means by which selections can be assigned within specific scopes at the sheet or object (filter, metric, table, chart) level if simpler/clearer methods do not suffice.
+						<ul>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/03/ytd">Qlik Design Blog: Year-over-Year Comparisons</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/02/26/why-comparative-analysis">Qlik Design Blog: Why Comparative Analysis</a></li>
+						<ul>
+					</p>
+				</div>
+
+				<h1>Buckets</h1>
+				<div>
+					<p>
+						Being able to bin the entire data set dynamically can be very useful for gaining insight into the data.
+						<ul>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2016/12/12/pareto-analysis">Qlik Design Blog: Recipe for a Pareto Analysis</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/09/15/abc-analysis">Qlik Design Blog: Recipe for an ABC Analysis</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/07/14/buckets">Qlik Design Blog: Buckets</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/28/segmentation-and-custom-dimension-grouping">Qlik Design Blog: Segmentation and custom dimension grouping</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/12/09/pareto-analysis">Qlik Design Blog: Recipe for a Pareto Analysis</a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+			<h1>Security</h1>
+			<div>
+				<p>
+					QlikView uses a security model called "Section Access".
+					While it is inferior to QlikSense's Attribute-Based Access Control scheme, Section Access is nonetheless a mature and robust scheme.
+					...
+					<ul>
+						<li>http://community.qlik.com/blogs/qlikviewdesignblog/2014/06/09/methods-for-data-reduction</li>
+						<li>http://community.qlik.com/blogs/qlikviewdesignblog/2014/06/02/data-reduction-using-multiple-fields</li>
+						<li>http://community.qlik.com/blogs/qlikviewdesignblog/2014/05/26/section-access</li>
+						<li>http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/02/complex-authorization</li>
+					</ul>
+				</p>
+
+				<h1>Client Access Licenses</h1>
+				<div>
+					<p>
+						CALs are needed for users to access reports QlikServer hosts.
+						They can be assigned to specific users and specific reports, specific users for any report, to specific reports for any user, and even for any user and any report.
+						...
+						<ol>
+							<li><a href="http://qlikshare.com/need-know-qlikview-cals/">QlikShare: All you need to know about QlikView CAL(s) – Part I</a></li>
+							<li><a href="http://qlikshare.com/need-know-qlikview-cals-part-ii/">QlikShare: All you need to know about QlikView CAL(s) – Part II</a></li>
+							<li><a href="http://qlikshare.com/qlikview-license-lease/">QlikShare: QlikView License Lease</a></li>
+						</ol>
+					</p>
+				</div>
+			</div>
+
+			<h1>Searching</h1>
+			<div>
+				<p>
+					QlikView searching functionality is advanced and robust, but the specifics of each can be confusing.
+					<ul>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/03/16/expression-searches">Qlik Design Blog: The Expression Search</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/03/02/the-search-string">Qlik Design Blog: The Search String</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/10/16/text-searches">Qlik Design Blog: Text searches</a></li>
+					</ul>
+				</p>
+			</div>
+
+			<h1>Expression Syntax</h1>
+			<div>
+				<p>
+					QlikView's scripting langauge is based on Microsoft VBScript.
+					...
+					<ul>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/06/08/escape-sequences">Qlik Design Blog: Escape sequences</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/11/24/the-equal-sign">Qlik Design Blog: The Little Equals Sign</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/11/18/dollar-expansions">Qlik Design Blog: Magic of Dollar Expansions</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/11/04/the-magic-of-variables">Qlik Design Blog: The Magic of Variables</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/04/09/quoteology">Qlik Design Blog: QlikView Quoteology</a></li>
+					</ul>
+				</p>
+
+				<h1>Comments</h1>
+				<div>
+					<p>
+						QlikView's script syntax uses C-style comments (//... & /*...*/), which means that QlikView script block comments (/*...*/) overlap with SQL syntax.
+						Since QlikView LOADs look similar to SQL SELECTs, it is important to understand (for the purposes of SQL hints) that all text after the SQL keyword and until the semicolon is sent directly to the SQL engine to which the script is connected without any pre-processing.
+						This also means that QlikView script inline comments (//...) in SQL will not cause compile-time errors but will cause run-time errors.
+					</p>
+				</div>
+			</div>
+
+			<h1>Internals</h1>
+			<div>
+				<p>
+					When tuning performance, understanding how QlikView works internally can be a valuable and time-saving asset.
+					<ul>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/08/20/the-calculation-engine">Qlik Design Blog: The Calculation Engine</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/15/logical-inference-and-aggregations">Qlik Design Blog: Logical Inference and Aggregations</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/15/states-and-state-vectors">Qlik Design Blog: Colors, States and State vectors</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/11/20/symbol-tables-and-bit-stuffed-pointers">Qlik Design Blog: Symbol Tables and Bit-Stuffed Pointers</a></li>
+					</ul>
+				</p>
+			</div>
+
+			<h1>NULL</h1>
+			<div>
+				<p>
+					While in the Load Script QlikView generally handles different types of missing data like most databases, it is still important to learn this behavior.
+					After the Load Script, NULLs behave differently in filters, metrics, chart/table dimensions, and chart/table measures.
+					<br />
+					<a href="http://community.qlik.com/docs/DOC-3155">Qlik Design Blog: NULL handling in QlikView</a>
+				</p>
+			</div>
+
+			<h1>Dual</h1>
+			<div>
+				<p>
+					QlikView is unique in its handling of data types; specifically, it actually has none.
+					Instead, every scalar value is a combination of a string (for display) and a number (for sorting).
+					This is how QlikView automatically translates week day numbers and month numbers into text.
+					Both "sides" of a value can be used in calculations, so there is no loss in taking advantage of this intentional design decision.
+					In fact, there are a host of use cases for manipulating the dual format.
+					Be aware, though, that the dual format does not always behave as a scalar value is expected to behave.
+					<ul>
+						<li><a href="http://www.qlikviewaddict.com/2012/12/the-qlikview-dual-function.html">QlikView Addict: QlikView Functions: dual()</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/11/13/dual">Qlik Design Blog: Data Types in QlikView</a></li>
+					</ul>
+				</p>
+			</div>
+
+			<h1>Dates</h1>
+			<div>
+				<p>
+					Though QlikView treats dates at least as well as most databases, it nonetheless has some caveats.
+
+					<ul>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/12/02/the-date-function">Qlik Design Blog: The Date Function</a></li>
+								•Interpretation functions use the textual value of the input, and convert this to a number.
+								•Formatting     functions use the numeric value of the input, and convert this to a text.
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/06/06/dynamically-selecting-timeframes">Qlik Design Blog: Dynamically Selecting Timeframes</a></li>
+						<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/06/10/relative-calendar-fields">Qlik Design Blog: Relative Calendar Fields</a></li>
+						<li><a href="http://www.qlikviewaddict.com/2012/07/dates-in-qlikview-part-1.html">QlikView Addict: Dates in QlikView - Part 1</a></li>
+						<li><a href="http://www.qlikviewaddict.com/2012/08/dates-in-qlikview-part-2.html">QlikView Addict: Dates in QlikView - Part 2</a></li>
+						<li><a href="http://www.qlikviewaddict.com/2013/03/dates-in-qlikview-part-3.html">QlikView Addict: Dates in QlikView - Part 3</a></li>
+					</ul>
+				</p>
+
+				<h1>Master Calendar</h1>
+				<div>
+					<p>
+						In nearly any reporting effort, master calendars are incredibly useful for maintaining consistency when implementing and tracking special time period as defined by business rules (e.g.: fiscal year, pay period, work week, workday/holiday, etc...).
+						Due to QlikView's associative nature, date and time need to be handled with care and consideration.
+						While the "one" (canonical for all date/time fields), the "many" (1 for each date/time field), or both master calendar strategies can and should be used, time, if needed, should always be separated into its own fields and tables to reduce memory overhead.
+						<ul>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2016/07/19/non-gregorian-calendars">Qlik Design Blog: Non-Gregorian calendars</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2016/07/04/recipe-for-a-4-4-5-calendar">Qlik Design Blog: Recipe for a 4-4-5 Calendar</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/08/30/master-table-with-multiple-roles">Qlik Design Blog: Why You sometimes should Load a Master Table several times</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/16/the-master-calendar">Qlik Design Blog: The Master Calendar</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/23/ancient-gods">Qlik Design Blog: Ancient Gods and Modern Days</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/23/the-master-time-table">Qlik Design Blog: The Master Time Table</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/01/21/week-start">Qlik Design Blog: Redefining the Week Start</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/01/27/week-numbers">Qlik Design Blog: Redefining the Week Numbers</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/02/17/canonical-date">Qlik Design Blog: Canonical Date</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/11/the-importance-of-being-distinct">Qlik Design Blog: The Importance Of Being Distinct</a></li>
+							<li><a href="http://community.qlik.com/docs/DOC-5834">QlikView Cookbook: Linking to two or more dates</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/05/28/fiscal-year">Qlik Design Blog: Fiscal Year</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/04/cyclic-or-sequential">Qlik Design Blog: Cyclic or Sequential?</a></li>
+							<li><a href="http://community.qlik.com/blogs/qlikviewdesignblog/2012/11/05/month-names">Qlik Design Blog: Roman Emperors and the Month Names</a></li>
+							<li>As Of/At
+								<ul>
+									<li><a href="https://community.qlik.com/blogs/qlikviewdesignblog/2015/11/02/the-as-of-table">Qlik Design Blog: The As-Of Table</a></li>
+									<li><a href="http://www.naturalsynergies.com/q-tip-4-how-to-use-as-of-date-table/">Natural Synergies: Q-Tip #4 - How to use "As of Date" table</a></li>
+									<li><a href="http://community.qlik.com/thread/151184">Qlik Community: Previous day set analysis</a></li>
+								</ul>
+							</li>
+							<li>Island
+								<ul>
+									<li><a href="http://community.qlik.com/thread/71115">Qlik Community: How to Implement a Date Island based on Start and End Dates</a>
+										<ul>
+											<li><a href="http://community.qlik.com/thread/67712">Qlik Community: Selecting Arbitrary Date Ranges</a></li>
+											<li><a href="http://community.qlik.com/thread/66717">Qlik Community: Tutorial - Using Common Date Dimensions and Shared Calendars</a>
+												<ul>
+													<li><a href="http://qlikviewcookbook.com/recipes/download-info/tutorial-using-common-date-dimensions/">QlikView Cookbook: Tutorial - Using Common Date Dimensions</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li><a href="http://community.qlik.com/thread/30560">Qlik Community: Set analysis - Date island</a></li>
+								</ul>
+							</li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<h1>Resources</h1>
+		<div>
+			<p>
+				Below is an array of generally useful QlikView resources.
+				<ul>
+					<li><a class="both" href="http://www.qlik.com/">Qlik</a>: Official QlikView website
+						<ul>
+							<li><a class="free" href="http://demo.qlik.com/">Demos</a></li>
+							<li>Training/Books
+								<ul>
+									<li>
+										While attending an official Designer or Developer class can be helpful, the respective books are useful on their own.
+										They unfortunately cannot be bought apart from their respective class, but your office may have copies of them from previous attendees.
+									</li>
+								</ul>
+							</li>
+							<li><a class="free" href="http://branch.qlik.com/">Qlik Branch</a>: Official QlikView open   source solution exchange</li>
+							<li><a class="both" href="http://market.qlik.com/">Qlik Market</a>: Official QlikView closed source solution exchange
+								<ul>
+									<li><a href="http://market.qlik.com/category/application.html">Applications</a>: Solve a specific need from CFO dashboards to procurement benchmarking.
+										<ul>
+											<li><a class="free" href="http://market.qlik.com/qlikview-governance-dashboard.html">QlikView Governance Dashboard</a></li>
+										</ul>
+									</li>
+									<li><a href="http://market.qlik.com/category/connector.html">Connectors</a>: Link specific source systems or data including connectors to Salesforce.com, SAP, and many other ETL solutions.
+										<ul>
+											<li><a class="paid" href="http://market.qlik.com/qvsource-the-qlikview-api-connector.html">QVSource - The QlikView & Qlik Sense API Connector</a></li>
+										</ul>
+									</li>
+									<li><a href="http://market.qlik.com/category/extension.html">Extensions</a>: Extend the QlikView experience by including features such as new chart types, geo-spatial mapping, or real-time data mapping.
+										<ul>
+											<li><a class="free" href="http://market.qlik.com/qlikview-accessibility-client-extension.html">QlikView Accessibility Client Extension </a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a class="free" href="http://qlikviewcookbook.com/">QlikView Cookbook</a>
+						<ul>
+							<li><a href="http://qlikviewcookbook.com/list-recipes/">Recipes</a></li>
+							<li><a href="http://qlikviewcookbook.com/tools/">Tools</a>
+								<ul>
+									<li>Document Analyzer: A tool that extracts and calculates QVW metadata; very useful for quicky understanding existing reports.</li>
+									<li>...</li>
+								</ul>
+							</li>
+							<li><a href="http://github.com/RobWunderlich/Qlikview-Components">QVC (QlikView Components)</a>: A library for common QlikView Scripting tasks, including the QVACB (QlikView Addict's CodeBox).</li>
+						</ul>
+					</li>
+				</ul>
+				<div>
+					<p>
+						Legend:
+						<ul>
+							<li class="free">This link and all under it lead to only free content.</li>
+							<li class="both">This link and all under it lead to both free and paid content.</li>
+							<li class="paid">This link and all under it lead to only paid content.</li>
+						</ul>
+					</p>
+				</div>
+			</p>
+		</div>
+	</div>
+	<!--
+	<a href="http://community.qlik.com/blogs/qlikviewdesignblog/2015/06/30/data-cleansing">Qlik Design Blog: Data Cleansing</a>
+
+	http://community.qlik.com/blogs/qlikviewdesignblog/2015/05/08/make-a-selection
+
+	https://community.qlik.com/blogs/qlikviewdesignblog/2016/04/12/natural-sets
+
+	Preceding LOAD
+		This is a shortcut for a subquery and can be chained as many times as needed.
+		Though QlikView lacks the shortcut of SQL's HAVING clause, Preceding LOAD can easily achieve this behavior.
+
+	https://community.qlik.com/blogs/qlikviewdesignblog/2015/09/07/fan-traps-and-chasm-traps
+
+	https://community.qlik.com/blogs/qlikviewdesignblog/2015/09/28/dates-in-set-analysis
+
+	ALL   (ignore dimensions & selections)
+	TOTAL (ignore dimensions)
+	{1}   (ignore              selections)
+
+	missing manual: https://community.qlik.com/docs/DOC-8342
+	https://community.qlik.com/blogs/qlikviewdesignblog/2015/10/27/the-above-function
+
+	https://community.qlik.com/blogs/qlikviewdesignblog/2015/10/05/pitfalls-of-the-aggr-function
+	reconsider aggr for averages & others
+	https://community.qlik.com/blogs/qlikviewdesignblog/2016/02/26/the-sortable-aggr-is-finally-here
+	https://community.qlik.com/blogs/qlikviewdesignblog/2016/03/07/set-analysis-in-the-aggr-function
+
+	bookmarks
+		document
+		public/shared
+		private
+
+	https://community.qlik.com/thread/10279
+		Qlik Community: Should We Stop Worrying and Love the Synthetic Key?
+
+	Concatenate vs Link Table
+		https://community.qlik.com/blogs/qlikviewdesignblog/2013/05/17/concatenate-vs-link-table
+	Fact Table with Mixed Granularity
+		https://community.qlik.com/blogs/qlikviewdesignblog/2012/10/26/mixed-granularity
+		Generic keys
+			https://community.qlik.com/docs/DOC-3451
+	Average – Which average?
+		https://community.qlik.com/blogs/qlikviewdesignblog/2013/07/29/averages
+	Accumulations
+		https://community.qlik.com/blogs/qlikviewdesignblog/2015/11/09/accumulations
+	Using the Ceil Function to Create a Quarter Field
+		https://community.qlik.com/blogs/qlikviewdesignblog/2015/12/11/using-the-ceil-function-to-create-a-quarter-field
+
+	https://community.qlik.com/blogs/qlikviewdesignblog/2016/03/15/qix-a-forgiving-engine
+
+	coding
+		functions
+			http://community.qlik.com/blogs/qlikviewdesignblog/2015/01/30/evaluate-function
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/08/29/recno-or-rowno
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/07/18/dual-exists-useful-functions
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/05/12/count-or-count-distinct
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/04/25/which-conditional-functions-do-you-use
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/01/valuelist-for-those-tricky-situations
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/04/08/peek-vs-previous-when-to-use-each
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/28/string-functions
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/07/aggr
+			http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/19/the-concat-function
+			http://community.qlik.com/blogs/qlikviewdesignblog/2012/08/03/the-only-function
+		aggregation
+			aggregation destroys the textual representation for dates, even though there is little-to-no readon for it
+				likey for others as well
+			http://community.qlik.com/blogs/qlikviewdesignblog/2015/04/17/what-does-the-total-qualifier-do
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/06/30/conditional-aggregations
+				http://community.qlik.com/blogs/qlikviewdesignblog/2014/07/07/performance-of-conditional-aggregations
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/06/23/subtotals
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/06/16/use-the-aggregation-functions
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/05/19/function-classes
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/09/09/aggregation-scope
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/08/06/it-s-all-aggregations
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/29/averages
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/11/when-should-the-aggr-function-not-be-used
+			http://community.qlik.com/blogs/qlikviewdesignblog/2012/10/12/accumulative-sums
+		script
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/11/21/hideprefix-hiding-fields
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/10/03/teaching-the-load-script-new-tricks
+			http://community.qlik.com/blogs/qlikviewdesignblog/2014/04/28/macros-are-bad
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/09/16/counters-in-the-load
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/09/02/loops-in-the-script
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/03/04/preceding-load
+		interp
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/12/17/rounding-errors
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/07/automatic-number-interpretation
+			http://community.qlik.com/blogs/qlikviewdesignblog/2013/02/19/why-don-t-my-dates-work
+			http://community.qlik.com/blogs/qlikviewdesignblog/2012/12/18/number-format-codes
+			http://community.qlik.com/blogs/qlikviewdesignblog/2012/06/07/get-the-dates-right
+		http://community.qlik.com/blogs/qlikviewdesignblog/2014/04/08/calculated-dimensions
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/11/15/extracting-data-from-a-qlikview-application
+	mult
+		http://community.qlik.com/blogs/qlikviewdesignblog/2014/09/01/scales-of-measurement
+			https://community.qlik.com/blogs/qlikviewdesignblog/2016/02/09/additive-and-non-additive-numbers
+		http://community.qlik.com/blogs/qlikviewdesignblog/2014/03/14/scrambling-data
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/12/02/collation
+			https://community.qlik.com/docs/DOC-5461
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/11/01/loading-data-into-input-boxes
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/11/30/handling-multiple-languages
+
+		hierarchies: http://community.qlik.com/docs/DOC-5334
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/02/08/displaying-the-top-salesperson-in-a-textbox
+
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/12/07/booleans
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/11/02/tips-and-tricks-pixel-perfect-or-qlikvew-natural
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/08/10/how-intervalmatch-solved-my-profit-and-loss-dilemma
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/06/15/a-different-look-on-the-use-of-repository-panel-container-object-and-alternate-state
+
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/28/memory-statistics
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/15/states-and-state-vectors
+
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/08/24/qlikview-11-dimension-limit-functionality
+	other
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/07/12/4-tips-to-start-working-with-qlikview--developer-edition
+		http://community.qlik.com/blogs/qlikviewdesignblog/2013/01/31/4-tips-to-start-working-with-qlikview
+		?? http://community.qlik.com/blogs/qlikviewdesignblog/2013/05/24/creating-a-trial-balance-sheet-in-qlikview
+		http://community.qlik.com/blogs/qlikviewdesignblog/2012/12/27/holiday-gift--organize-the-files-on-your-machine
+	business discovery blog
+		http://community.qlik.com/blogs/theqlikviewblog/2012/05/18/green-is-the-colour
+		http://community.qlik.com/blogs/theqlikviewblog/2014/04/10/the-associative-experience--revisited
+		http://community.qlik.com/blogs/theqlikviewblog/2014/01/03/wizards-vs-scripts
+		http://community.qlik.com/blogs/theqlikviewblog/2013/05/23/the-qlikview-journey
+		http://community.qlik.com/blogs/theqlikviewblog/2013/02/21/visualizations-the-tip-of-the-iceberg-of-understanding
+	http://www.qlikblog.at/971/qliktip-32-exporting-multiple-objects-single-excel-document/
+	built-in variables/settings
+
+	http://community.qlik.com/blogs/qlikviewdesignblog/2015/04/25/coloring-a-scatter-plot
+
+	https://community.qlik.com/blogs/theqlikviewblog/2013/07/16/the-feynman-problem-solving-algorithm
+
+qlik p&p
+	look for links for each section, starting w/ Deployment
+		including solid community additions, start at top
+	dynamically loading
+		connection strings
+	cross join
+	always "order by" ending w/ unique key
+	isnull checking
+	'' != null, just as sql server
+	date handling
+	search: AND (:p IS NULL OR t.c = :p)
+	qlikview hides exactly duplicate rows
+	wildcard LOADs: problematic, as many things don't work properly (grouping) due to underlying implementation
+		looping is preferred alternative, so you can explicitly know what is and isn't happening
+
+http://qlikviewcookbook.com/2015/03/info-on-info-or-what-is-the-i-for/
+http://qlikviewcookbook.com/2014/08/preceding-load-is-elegant/
+http://qlikviewcookbook.com/2014/07/expressionless-and-dimensionless-charts/
+http://qlikviewcookbook.com/2014/05/the-third-format/
+http://qlikviewcookbook.com/2014/01/a-color-trick/
+http://qlikviewcookbook.com/2013/07/calculating-a-duration-using-two-rows/
+http://qlikviewcookbook.com/2013/01/filling-default-values-using-mapping/
+http://qlikviewcookbook.com/2011/12/initial-selections-and-current-selections/
+http://qlikviewcookbook.com/2011/10/correct-time-arithmetic/
+http://qlikviewcookbook.com/2010/12/deconstructing-chart-design/
+http://qlikviewcookbook.com/2010/07/the-now-trap/
+http://qlikviewcookbook.com/2010/02/reusing-expressions-chart-column-references/
+http://qlikviewcookbook.com/2009/12/simplify-with-preceding-load/
+http://qlikviewcookbook.com/2009/11/understanding-join-and-concatenate/
+
+alerts
+	http://qlikviewcookbook.com/2014/01/using-alerts-to-send-the-numbers/
+		+ links at bottom
+
+
+
+script keywords & statements
+		partial reload
+			add
+			only
+			ispartialreload
+	bundle
+	comment field
+	comment table
+	Force: interprets column names under a casing rule so that consistency can be maintained, especially across varying types of sources
+	hierarchy
+	hierarchybelongsto
+	image_size
+	info
+	inputfield
+	let
+	?loosen table
+	nullasvalue
+	nullasnull
+	rename field
+	rename table
+	sample
+	section
+	semantic
+	set
+	sqlcolumns
+	sqltables
+	sqltypes
+	tag field
+	untag field
+$(#var)
+operators
+	like
+	follows
+	precedes
+functions
+	aggregation
+		firstsortedvalue
+		concat
+		numericcount
+		textcount
+		nullcount
+		missingcount
+		?fractile
+	non
+		fieldvaluecount
+		ord
+		chr
+		index: instr
+		repeat + l/rtrim: L/RPAD
+		keepchar
+		purgechar
+		subfield
+		evaluate
+		substringcount
+		previous
+		peek
+		exists
+		fieldvalue
+		fieldindex
+		lookup
+		alt: COALESCE
+		pick
+		match/mixmatch/wildmatch/
+		class
+	meta
+		osuser
+		qvuser
+		qlikviewversion
+		documentname/documentpath
+		documenttitle
+		computername
+		relaodtime
+		getregistrystring
+		input
+		msgbox
+-->
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<style type="text/css">
+		table  { border: 1px solid black; border-collapse: collapse; }
+		th, td { border: 1px solid black; font-family: monospace; white-space: pre-wrap; }
+	</style>
+	<title></title>
+</head>
+<body>
+<table>
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>QlikView Example</th>
+			<th>SQL Equivalent</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>Load</th>
+			<td>
+header:
+  LOAD header_key
+     , date_transaction
+  FROM ...;
+
+detail:
+  LOAD header_key
+     , category
+     , product
+  FROM ...;
+			</td>
+			<td>
+SELECT header_key
+     , date_transaction
+  FROM header;
+
+SELECT header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td style="float: left;">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">header</th>
+						</tr>
+						<tr>
+							<th>header_key</th>
+							<th>date_transaction</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>2015/01/01</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>2015/12/31</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<thead>
+						<tr>
+							<th colspan="3">detail</th>
+						</tr>
+						<tr>
+							<th>header_key</th>
+							<th>category</th>
+							<th>product</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Food</td>
+							<td>Granola</td>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td>Office</td>
+							<td>Pen</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Food</td>
+							<td>Candy</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<th>Concatenate</th>
+			<td>
+concat:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+CONCATENATE(concat)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT header_key
+     , date_transaction
+     , NULL AS category
+     , NULL AS product
+  FROM header
+UNION ALL
+SELECT header_key
+     , NULL AS date_transaction
+     , category
+     , product
+  FROM header;
+			</td>
+			<td style="float: left;">
+
+			</td>
+		</tr>
+		<tr>
+			<th>Inner Join</th>
+			<td>
+join_inner:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+INNER JOIN(join_inner)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT h.header_key
+     , h.date_transaction
+     , d.category
+     , d.product
+  FROM header h
+       INNER JOIN detail d ON (d.header_key = h.header_key);
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Left Join</th>
+			<td>
+join_left:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+LEFT JOIN(join_left)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT h.header_key
+     , h.date_transaction
+     , d.category
+     , d.product
+  FROM header h
+       LEFT OUTER JOIN detail d ON (d.header_key = h.header_key);
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Right Join</th>
+			<td>
+join_right:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+RIGHT JOIN(join_right)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT d.header_key
+     , h.date_transaction
+     , d.category
+     , d.product
+  FROM header h
+       RIGHT OUTER JOIN detail d ON (d.header_key = h.header_key);
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Outer Join</th>
+			<td>
+join_outer:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+OUTER JOIN(join_outer)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT COALESCE(h.header_key, d.header_key) AS header_key
+     , h.date_transaction
+     , d.category
+     , d.product
+  FROM header h
+       FULL OUTER JOIN detail d ON (d.header_key = h.header_key);
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Inner Keep</th>
+			<td>
+header_keep_inner:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+detail_keep_inner:
+INNER KEEP(header)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT h.header_key
+     , h.date_transaction
+  FROM header h
+       INNER JOIN detail d ON (d.header_key = h.header_key);
+
+SELECT d.header_key
+     , d.category
+     , d.product
+  FROM detail d
+       INNER JOIN header h ON (h.header_key = d.header_key);
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Left Keep</th>
+			<td>
+header_keep_left:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+detail_keep_left:
+LEFT KEEP(header)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT header_key
+     , date_transaction
+  FROM header;
+
+SELECT d.header_key
+     , d.category
+     , d.product
+  FROM detail d
+       INNER JOIN header h ON (h.header_key = d.header_key);
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Right Keep</th>
+			<td>
+header_keep_right:
+  LOAD header_key
+     , date_transaction
+  FROM header;
+
+detail_keep_right:
+RIGHT KEEP(header)
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT h.header_key
+     , h.date_transaction
+  FROM header h
+       INNER JOIN detail d ON (d.header_key = h.header_key);
+
+SELECT header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>Generic</th>
+			<td>
+detail_generic:
+GENERIC
+  LOAD header_key
+     , category
+     , product
+  FROM detail;
+			</td>
+			<td>
+SELECT header_key
+     , [Category A]
+     , [Category B]
+     , [Category C]
+  FROM detail
+PIVOT (
+       CASE COUNT(DISTINCT product) WHEN 1 THEN MAX(product) END
+   FOR category
+    IN ([Category A], [Category B], [Category C]));
+			</td>
+			<td>
+
+			</td>
+		</tr>
+		<tr>
+			<th>CrossTable</th>
+			<td>
+detail_crosstable:
+CROSSTABLE(category, product)
+  LOAD header_key
+     , [Category A]
+     , [Category B]
+     , [Category C]
+  FROM detail_generic;
+			</td>
+			<td>
+SELECT header_key
+     , category
+     , product
+  FROM detail_pivot
+UNPIVOT (
+       product
+   FOR category
+    IN ([Category A], [Category B], [Category C]));
+			</td>
+			<td>
+
+			</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>
