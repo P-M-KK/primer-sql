@@ -3,15 +3,15 @@
 title: ML Flow
 ---
 flowchart LR
-  SO[Source]
-  A[All]
-  K[Known]
-  UK[Unknown]
-  TR[Train]
-  TE[Test]
+  SO[(Source)]
+  A[/All/]
+  K[/Known/]
+  UK[/Unknown/]
+  TR[/Train/]
+  TE[/Test/]
   M[Model]
-  SC[Scored]
-  TA[Target]
+  SC[/Scored/]
+  TA[(Target)]
 
   SO --> A
   A  --> K
