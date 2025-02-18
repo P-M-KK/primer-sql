@@ -216,14 +216,14 @@
       <td></td>
     </tr>
     <tr>
-      <th>sequence</th>
+      <th>left</th>
       <td>x, y</td>
-      <td></td>
+      <td>x, y = my_2_sequence</td>
     </tr>
     <tr>
-      <th>iterable</th>
+      <th>left, partial</th>
       <td>x, *y, z</td>
-      <td></td>
+      <td>first, *rest, last = my_sequence</td>
     </tr>
   </tbody>
 </table>
