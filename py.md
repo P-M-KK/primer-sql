@@ -206,24 +206,24 @@
   </thead>
   <tbody>
     <tr>
-      <th>string, tuple, list, set</th>
+      <th>literal</th>
       <td>*x</td>
-      <td></td>
+      <td>*my_collection &rarr; x, y,</td>
     </tr>
     <tr>
-      <th>dict</th>
+      <th>literal, dict</th>
       <td>**x</td>
-      <td></td>
+      <td>**my_dict &rarr; x: a, y: b,</td>
     </tr>
     <tr>
-      <th>left</th>
+      <th>assignment</th>
       <td>x, y</td>
-      <td>x, y = my_2_sequence</td>
+      <td>x, y = my_2_collection</td>
     </tr>
     <tr>
-      <th>left, partial</th>
+      <th>assignment, partial</th>
       <td>x, *y, z</td>
-      <td>first, *rest, last = my_sequence</td>
+      <td>first, *rest, last = my_collection</td>
     </tr>
   </tbody>
 </table>
