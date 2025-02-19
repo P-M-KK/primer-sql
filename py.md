@@ -14,6 +14,8 @@
       <th>1</th>
       <th>Example</th>
       <th>Specialized</th>
+      <th>ABC</th>
+      <th>Remarks</th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +26,8 @@
       <td>(x)</td>
       <td>("foo" "\\" "bar")</td>
       <td></td>
+      <td></td>
+      <td>not a collection, but included due to syntactic similarity</td>
     </tr>
     <tr>
       <th>tuple</th>
@@ -32,6 +36,8 @@
       <td>(x,)</td>
       <td>("foo", "\\", "bar")</td>
       <td>namedtuple</td>
+      <td>Sequence</td>
+      <td>heterogenous, ordered, immutable</td>
     </tr>
     <tr>
       <th>tuple, implicit</th>
@@ -39,6 +45,8 @@
       <td></td>
       <td>x,</td>
       <td>"foo", "\\", "bar"</td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -48,6 +56,8 @@
       <td>[x]</td>
       <td>["foo", "\\", "bar"]</td>
       <td>dequeue</td>
+      <td>Sequence</td>
+      <td>homogenous, ordered</td>
     </tr>
     <tr>
       <th>set</th>
@@ -56,6 +66,8 @@
       <td>{x}</td>
       <td>{"foo", "\\", "bar"}</td>
       <td>frozenset</td>
+      <td>Set</td>
+      <td>homogenous, unordered, unique</td>
     </tr>
     <tr>
       <th>dict</th>
@@ -82,6 +94,8 @@
         <br/>
         defaultdict
       </td>
+      <td>Mapping</td>
+      <td>homogenous, unordered, unique key</td>
     </tr>
   </tbody>
 </table>
