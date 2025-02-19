@@ -56,6 +56,17 @@
       <td>avoid for singletons</td>
     </tr>
     <tr>
+      <th>string</th>
+      <td>"" or ''</td>
+      <td>""</td>
+      <td>"x"</td>
+      <td>"foo\\bar"</td>
+      <td></td>
+      <td>Sequence</td>
+      <td>homogenous (char-only), ordered, immutable</td>
+      <td>not a collection, but many overlapping operations, so a single string may be interpreted as a char collection accidentally</td>
+    </tr>
+    <tr>
       <th>list</th>
       <td>[,]</td>
       <td>[]</td>
