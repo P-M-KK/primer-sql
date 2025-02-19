@@ -4,6 +4,8 @@
 
 # Cheat Sheet
 
+---
+
 <table>
   <caption>Collections</caption>
   <thead>
@@ -47,7 +49,7 @@
       <td>"foo", "\\", "bar"</td>
       <td></td>
       <td></td>
-      <td></td>
+      <td>avoid for singletons</td>
     </tr>
     <tr>
       <th>list</th>
@@ -132,6 +134,8 @@
     </tr>
   </tbody>
 </table>
+
+---
 
 <table>
   <caption>Strings</caption>
@@ -251,6 +255,8 @@
   </tbody>
 </table>
 
+---
+
 <table>
   <caption>Collection Unpacking</caption>
   <thead>
@@ -326,6 +332,8 @@
   </tbody>
 </table>
 
+---
+
 <table>
   <caption>Line Manipulation</caption>
   <thead>
@@ -387,6 +395,8 @@
     </tr>
   </tbody>
 </table>
+
+---
 
 ## Misc
 
