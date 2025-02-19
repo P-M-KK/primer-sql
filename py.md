@@ -285,7 +285,7 @@
 </table>
 
 <table>
-  <caption>Function Definition Variadic Arguments</caption>
+  <caption>Variadic Functions</caption>
   <thead>
     <tr>
       <th>Type</th>
@@ -313,7 +313,7 @@
       </td>
     </tr>
     <tr>
-      <th>forcing positional, either, & keyword</th>
+      <th>explicit positional, either, & keyword</th>
       <td>x, /, y, *, z</td>
       <td>
         def myfunc(x, /, y, *, z): pass
@@ -327,7 +327,7 @@
 </table>
 
 <table>
-  <caption>Statement/Line Manipulation</caption>
+  <caption>Line Manipulation</caption>
   <thead>
     <tr>
       <th>Type</th>
@@ -348,6 +348,16 @@
       <td>for readability</td>
     </tr>
     <tr>
+      <th>1 collection, many lines</th>
+      <td>(,) or [,] or {,} or {:,}</td>
+      <td>
+        (x
+        <br/>
+        , y)
+      </td>
+      <td>for readability</td>
+    </tr>
+    <tr>
       <th>1 statement, many lines</th>
       <td>\</td>
       <td>
@@ -364,7 +374,7 @@
       <td>avoid: limited, tricky, & less performant</td>
     </tr>
     <tr>
-      <th>many different statements, 1 line</th>
+      <th>many statements, 1 line</th>
       <td>;</td>
       <td>x = 1; y++</td>
       <td>for REPL</td>
