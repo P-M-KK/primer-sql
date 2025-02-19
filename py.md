@@ -17,6 +17,7 @@
       <th>Example</th>
       <th>Specialized</th>
       <th>ABC</th>
+      <th>Properties</th>
       <th>Remarks</th>
     </tr>
   </thead>
@@ -29,6 +30,7 @@
       <td>("foo" "\\" "bar")</td>
       <td></td>
       <td></td>
+      <td></td>
       <td>not a collection, but included due to syntactic similarity</td>
     </tr>
     <tr>
@@ -39,7 +41,8 @@
       <td>("foo", "\\", "bar")</td>
       <td>namedtuple</td>
       <td>Sequence</td>
-      <td>properties: heterogenous, ordered, immutable</td>
+      <td>heterogenous, ordered, immutable</td>
+      <td></td>
     </tr>
     <tr>
       <th>tuple, implicit</th>
@@ -47,6 +50,7 @@
       <td></td>
       <td>x,</td>
       <td>"foo", "\\", "bar"</td>
+      <td></td>
       <td></td>
       <td></td>
       <td>avoid for singletons</td>
@@ -59,7 +63,8 @@
       <td>["foo", "\\", "bar"]</td>
       <td>dequeue</td>
       <td>Sequence</td>
-      <td>properties: homogenous, ordered</td>
+      <td>homogenous, ordered</td>
+      <td></td>
     </tr>
     <tr>
       <th>set</th>
@@ -69,7 +74,8 @@
       <td>{"foo", "\\", "bar"}</td>
       <td>frozenset</td>
       <td>Set</td>
-      <td>properties: homogenous, unordered, unique</td>
+      <td>homogenous, unordered, unique</td>
+      <td></td>
     </tr>
     <tr>
       <th>dict</th>
@@ -97,7 +103,8 @@
         defaultdict
       </td>
       <td>Mapping</td>
-      <td>properties: homogenous, unordered, unique key</td>
+      <td>homogenous, unordered, unique key</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
