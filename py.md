@@ -62,7 +62,17 @@
       <td>{:,}</td>
       <td>{}</td>
       <td>{x:y}</td>
-      <td>{<br/>0: "foo",<br/>1: "\\",<br/>2: "bar"<br/>}</td>
+      <td>
+        {
+          <br/>
+          0: "foo",
+          <br/>
+          1: "\\",
+          <br/>
+          2: "bar"
+          <br/>
+        }
+      </td>
       <td>
         ChainMap
         <br/>
@@ -132,7 +142,11 @@
     <tr>
       <th>formatted</th>
       <td>f""</td>
-      <td>var = "bar"<br/>f"foo\\{var}"</td>
+      <td>
+        var = "bar"
+        <br/>
+        f"foo\\{var}"
+      </td>
     </tr>
     <tr>
       <th>byte</th>
@@ -141,18 +155,46 @@
     </tr>
     <tr>
       <th>block</th>
-      <td>"""<br/>"""</td>
-      <td>"""foo\\<br/>bar"""</td>
+      <td>
+        """
+        <br/>
+        """
+      </td>
+      <td>
+        """foo\\
+        <br/>
+        bar"""
+      </td>
     </tr>
     <tr>
       <th>block, group</th>
-      <td>(""<br/>"")</td>
-      <td>("foo\\"<br/>"bar")</td>
+      <td>
+        (""
+        <br/>
+        "")
+      </td>
+      <td>
+        ("foo\\"
+        <br/>
+        "bar")
+      </td>
     </tr>
     <tr>
-      <th>block, operator (avoid)</th>
-      <td>"" \<br/>""</td>
-      <td>"foo\\" \<br/>"bar"</td>
+      <th>
+        block, operator
+        <br/>
+        (avoid)
+      </th>
+      <td>
+        "" \
+        <br/>
+        ""
+      </td>
+      <td>
+        "foo\\" \
+        <br/>
+        "bar"
+      </td>
     </tr>
   </tbody>
 </table>
@@ -239,19 +281,85 @@
   </thead>
   <tbody>
     <tr>
-      <th>packed tuple</th>
+      <th>packed tuple of positional</th>
       <td>*x</td>
-      <td></td>
+      <td>
+        def myfunc(*args): pass
+        <br/>
+        myfunc(1, 2, 3)
+      </td>
     </tr>
     <tr>
-      <th>packed dict</th>
+      <th>packed dict of keyword</th>
       <td>**x</td>
-      <td></td>
+      <td>
+        def myfunc(**kwargs): pass
+        <br/>
+        myfunc(x=1, y=2, z=3)
+      </td>
     </tr>
     <tr>
-      <th>positional, either, keyword</th>
+      <th>forcing positional, either, & keyword</th>
       <td>x, /, y, *, z</td>
-      <td></td>
+      <td>
+        def myfunc(x, /, y, *, z): pass
+        <br/>
+        myfunc(1, 2, z=3)
+        <br/>
+        myfunc(1, y=2, z=3)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <caption>Statement/Line Manipulation</caption>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Syntax</th>
+      <th>Example</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1 expression, many lines</th>
+      <td>()</td>
+      <td>
+        (x
+        <br/>
+        + y)
+      </td>
+      <td>for readability</td>
+    </tr>
+    <tr>
+      <th>1 statement, many lines</th>
+      <td>\</td>
+      <td>
+        x \
+        <br/>
+        + y
+      </td>
+      <td>avoid</td>
+    </tr>
+    <tr>
+      <th>many similar statements, 1 line</th>
+      <td>,</td>
+      <td>x, y = 1, 2</td>
+      <td>avoid: limited, tricky, & less performant</td>
+    </tr>
+    <tr>
+      <th>many different statements, 1 line</th>
+      <td>;</td>
+      <td>x = 1; y++</td>
+      <td>for REPL</td>
+    </tr>
+    <tr>
+      <th>1 clause, 1 line</th>
+      <td>:</td>
+      <td>if x > y: x++</td>
+      <td>for 1-liners</td>
     </tr>
   </tbody>
 </table>
@@ -259,8 +367,6 @@
 ## Misc
 
 adjacent strings within an expression are concatenated automatically
-
-semicolon combines multiple lines of the same scope/indent
 
 # Resources
 
