@@ -117,6 +117,28 @@
       <td>homogenous, unordered, mutable, unique key</td>
       <td></td>
     </tr>
+    <tr>
+      <th>array</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>NumPy Array</td>
+      <td></td>
+      <td>homogenous, ordered, mutable, n-dimensional, fixed size</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Pandas DataFrame</td>
+      <td></td>
+      <td>heterogenous, ordered, mutable, 2-dimensional</td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
 
