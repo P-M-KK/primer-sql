@@ -356,6 +356,20 @@
       <td>for readability</td>
     </tr>
     <tr>
+      <th>1 string, many lines</th>
+      <td>
+        """
+        <br/>
+        """
+      </td>
+      <td>
+        """foo\\
+        <br/>
+        bar"""
+      </td>
+      <td>for readability</td>
+    </tr>
+    <tr>
       <th>1 collection, many lines</th>
       <td>(,) or [,] or {,} or {:,}</td>
       <td>
