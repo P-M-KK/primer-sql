@@ -212,11 +212,7 @@
       <td>adjacent string literals within an expression are concatenated automatically</td>
     </tr>
     <tr>
-      <th>
-        block, operator
-        <br/>
-        (avoid)
-      </th>
+      <th>block, operator</th>
       <td>
         "" \
         <br/>
@@ -227,7 +223,11 @@
         <br/>
         "bar"
       </td>
-      <td>adjacent string literals within an expression are concatenated automatically</td>
+      <td>
+        avoid
+        <br/>
+        adjacent string literals within an expression are concatenated automatically
+      </td>
     </tr>
   </tbody>
 </table>
@@ -239,6 +239,7 @@
       <th>Type</th>
       <th>Syntax</th>
       <th>Example</th>
+      <th>Remarks</th>
     </tr>
   </thead>
   <tbody>
@@ -246,26 +247,31 @@
       <th>inline</th>
       <td>f"{x}"</td>
       <td>f"foo\\{var}"</td>
+      <td>evaluation upon definition</td>
     </tr>
     <tr>
       <th>function</th>
       <td>"{}".format(x)</td>
       <td>"foo\\{}".format(var)</td>
+      <td></td>
     </tr>
     <tr>
       <th>function, indexed</th>
       <td>"{#}".format(x)</td>
       <td>"foo\\{0}".format(var)</td>
+      <td></td>
     </tr>
     <tr>
       <th>function, named</th>
       <td>"{y}".format(y=x)</td>
       <td>"foo\\{v}".format(v=var)</td>
+      <td></td>
     </tr>
     <tr>
-      <th>operator (deprecated)</th>
+      <th>operator</th>
       <td>"%s" % x</td>
       <td>"foo\\%s" % var</td>
+      <td>deprecated</td>
     </tr>
   </tbody>
 </table>
