@@ -151,6 +151,7 @@
       <th>Type</th>
       <th>Syntax</th>
       <th>Example</th>
+      <th>Remarks</th>
     </tr>
   </thead>
   <tbody>
@@ -158,11 +159,13 @@
       <th>normal</th>
       <td>"" or ''</td>
       <td>"foo\\bar"</td>
+      <td></td>
     </tr>
     <tr>
       <th>raw</th>
       <td>r""</td>
       <td>r"foo\bar"</td>
+      <td></td>
     </tr>
     <tr>
       <th>formatted</th>
@@ -172,11 +175,13 @@
         <br/>
         f"foo\\{var}"
       </td>
+      <td></td>
     </tr>
     <tr>
       <th>byte</th>
       <td>b""</td>
       <td>b"foo\x5Cbar"</td>
+      <td></td>
     </tr>
     <tr>
       <th>block</th>
@@ -190,6 +195,7 @@
         <br/>
         bar"""
       </td>
+      <td></td>
     </tr>
     <tr>
       <th>block, group</th>
@@ -203,6 +209,7 @@
         <br/>
         "bar")
       </td>
+      <td>adjacent string literals within an expression are concatenated automatically</td>
     </tr>
     <tr>
       <th>
@@ -220,11 +227,10 @@
         <br/>
         "bar"
       </td>
+      <td>adjacent string literals within an expression are concatenated automatically</td>
     </tr>
   </tbody>
 </table>
-
-adjacent string literals within an expression are concatenated automatically
 
 <table>
   <caption>String Interpolation</caption>
