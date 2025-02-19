@@ -61,9 +61,9 @@
       <td>[]</td>
       <td>[x]</td>
       <td>["foo", "\\", "bar"]</td>
-      <td>dequeue</td>
+      <td>deque</td>
       <td>Sequence</td>
-      <td>homogenous, ordered</td>
+      <td>homogenous, ordered, mutable</td>
       <td></td>
     </tr>
     <tr>
@@ -72,9 +72,9 @@
       <td>set()</td>
       <td>{x}</td>
       <td>{"foo", "\\", "bar"}</td>
-      <td>frozenset</td>
+      <td>frozenset (immutable)</td>
       <td>Set</td>
-      <td>homogenous, unordered, unique</td>
+      <td>homogenous, unordered, mutable, unique</td>
       <td></td>
     </tr>
     <tr>
@@ -94,16 +94,16 @@
         }
       </td>
       <td>
-        ChainMap
+        ChainMap (list of dicts)
         <br/>
-        Counter
-        <br/>
-        OrderedDict
+        Counter (multiset)
         <br/>
         defaultdict
+        <br/>
+        OrderedDict (ordered)
       </td>
       <td>Mapping</td>
-      <td>homogenous, unordered, unique key</td>
+      <td>homogenous, unordered, mutable, unique key</td>
       <td></td>
     </tr>
   </tbody>
