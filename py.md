@@ -23,6 +23,28 @@
   </thead>
   <tbody>
     <tr>
+      <th>string</th>
+      <td>"" or ''</td>
+      <td>""</td>
+      <td>"x"</td>
+      <td>"foo\\bar"</td>
+      <td></td>
+      <td>Sequence</td>
+      <td>homogenous (char-only), ordered, immutable</td>
+      <td>not a collection, but many overlapping operations, so a single string may be interpreted as a char collection accidentally</td>
+    </tr>
+    <tr>
+      <th>bytes</th>
+      <td>b"" or b''</td>
+      <td>b""</td>
+      <td>b"x"</td>
+      <td>b"foo\x5Cbar"</td>
+      <td>bytearray (mutable)</td>
+      <td>Buffer</td>
+      <td>homogenous (byte-only), ordered, immutable</td>
+      <td>...</td>
+    </tr>
+    <tr>
       <th>group</th>
       <td>()</td>
       <td></td>
@@ -56,25 +78,18 @@
       <td>avoid for singletons</td>
     </tr>
     <tr>
-      <th>string</th>
-      <td>"" or ''</td>
-      <td>""</td>
-      <td>"x"</td>
-      <td>"foo\\bar"</td>
-      <td></td>
-      <td>Sequence</td>
-      <td>homogenous (char-only), ordered, immutable</td>
-      <td>not a collection, but many overlapping operations, so a single string may be interpreted as a char collection accidentally</td>
-    </tr>
-    <tr>
       <th>list</th>
       <td>[,]</td>
       <td>[]</td>
       <td>[x]</td>
       <td>["foo", "\\", "bar"]</td>
-      <td>deque</td>
+      <td>
+        deque
+        <br/>
+        Pandas Series
+      </td>
       <td>Sequence</td>
-      <td>homogenous, ordered, mutable</td>
+      <td>homogenous, ordered, mutable, dynamic size</td>
       <td></td>
     </tr>
     <tr>
@@ -85,7 +100,7 @@
       <td>{"foo", "\\", "bar"}</td>
       <td>frozenset (immutable)</td>
       <td>Set</td>
-      <td>homogenous, unordered, mutable, unique</td>
+      <td>homogenous, unordered, mutable, dynamic size, unique</td>
       <td></td>
     </tr>
     <tr>
@@ -112,9 +127,11 @@
         defaultdict
         <br/>
         OrderedDict (ordered)
+        <br/>
+        Pandas DataFrame (ordered dict of Pandas Series)
       </td>
       <td>Mapping</td>
-      <td>homogenous, unordered, mutable, unique key</td>
+      <td>homogenous, unordered, mutable, dynamic size, unique key</td>
       <td></td>
     </tr>
     <tr>
@@ -123,20 +140,9 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>NumPy Array</td>
+      <td>NumPy NDArray</td>
       <td></td>
-      <td>homogenous, ordered, mutable, n-dimensional, fixed size</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>Pandas DataFrame</td>
-      <td></td>
-      <td>heterogenous, ordered, mutable, 2-dimensional</td>
+      <td>homogenous, ordered, mutable, fixed size, n-dimensional</td>
       <td></td>
     </tr>
   </tbody>
@@ -149,6 +155,7 @@
       <th>Type</th>
       <th>Syntax</th>
       <th>Example</th>
+      <th>Remarks</th>
     </tr>
   </thead>
   <tbody>
@@ -156,21 +163,25 @@
       <th>list</th>
       <td>[]</td>
       <td>[x for x in my_iterable]</td>
+      <td></td>
     </tr>
     <tr>
       <th>set</th>
       <td>{}</td>
       <td>{x for x in my_iterable}</td>
+      <td></td>
     </tr>
     <tr>
       <th>dict</th>
       <td>{:}</td>
       <td>{k: v for k, v in my_iterable}</td>
+      <td></td>
     </tr>
     <tr>
       <th>generator</th>
       <td>()</td>
       <td>(x for x in my_iterable)</td>
+      <td>lazy</td>
     </tr>
   </tbody>
 </table>
