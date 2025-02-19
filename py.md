@@ -224,6 +224,8 @@
   </tbody>
 </table>
 
+adjacent string literals within an expression are concatenated automatically
+
 <table>
   <caption>String Interpolation</caption>
   <thead>
@@ -353,16 +355,6 @@
   </thead>
   <tbody>
     <tr>
-      <th>1 expression, many lines</th>
-      <td>()</td>
-      <td>
-        (x
-        <br/>
-        + y)
-      </td>
-      <td>for readability</td>
-    </tr>
-    <tr>
       <th>1 string, many lines</th>
       <td>
         """
@@ -383,6 +375,16 @@
         (x
         <br/>
         , y)
+      </td>
+      <td>for readability</td>
+    </tr>
+    <tr>
+      <th>1 expression, many lines</th>
+      <td>()</td>
+      <td>
+        (x
+        <br/>
+        + y)
       </td>
       <td>for readability</td>
     </tr>
@@ -418,10 +420,6 @@
 </table>
 
 ---
-
-## Misc
-
-adjacent strings within an expression are concatenated automatically
 
 # Resources
 
