@@ -86,7 +86,7 @@
       <td>
         deque (stack/queue)
         <br/>
-        array (num-only)
+        array (num/char-only)
         <br/>
         Pandas Series
       </td>
