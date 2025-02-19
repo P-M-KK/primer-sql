@@ -39,7 +39,7 @@
       <td>("foo", "\\", "bar")</td>
       <td>namedtuple</td>
       <td>Sequence</td>
-      <td>heterogenous, ordered, immutable</td>
+      <td>properties: heterogenous, ordered, immutable</td>
     </tr>
     <tr>
       <th>tuple, implicit</th>
@@ -59,7 +59,7 @@
       <td>["foo", "\\", "bar"]</td>
       <td>dequeue</td>
       <td>Sequence</td>
-      <td>homogenous, ordered</td>
+      <td>properties: homogenous, ordered</td>
     </tr>
     <tr>
       <th>set</th>
@@ -69,7 +69,7 @@
       <td>{"foo", "\\", "bar"}</td>
       <td>frozenset</td>
       <td>Set</td>
-      <td>homogenous, unordered, unique</td>
+      <td>properties: homogenous, unordered, unique</td>
     </tr>
     <tr>
       <th>dict</th>
@@ -97,7 +97,7 @@
         defaultdict
       </td>
       <td>Mapping</td>
-      <td>homogenous, unordered, unique key</td>
+      <td>properties: homogenous, unordered, unique key</td>
     </tr>
   </tbody>
 </table>
