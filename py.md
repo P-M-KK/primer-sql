@@ -358,29 +358,29 @@
       <th>packed tuple of positional</th>
       <td>*x</td>
       <td>
-        def myfunc(*args): pass
+        def my_func(*args): pass
         <br/>
-        myfunc(1, 2, 3)
+        my_func(1, 2, 3)
       </td>
     </tr>
     <tr>
       <th>packed dict of keyword</th>
       <td>**x</td>
       <td>
-        def myfunc(**kwargs): pass
+        def my_func(**kwargs): pass
         <br/>
-        myfunc(x=1, y=2, z=3)
+        my_func(x=1, y=2, z=3)
       </td>
     </tr>
     <tr>
       <th>explicit positional, either, & keyword</th>
       <td>x, /, y, *, z</td>
       <td>
-        def myfunc(x, /, y, *, z): pass
+        def my_func(x, /, y, *, z): pass
         <br/>
-        myfunc(1, 2, z=3)
+        my_func(1, 2, z=3)
         <br/>
-        myfunc(1, y=2, z=3)
+        my_func(1, y=2, z=3)
       </td>
     </tr>
   </tbody>
@@ -445,9 +445,9 @@
     </tr>
     <tr>
       <th>many similar statements, 1 line</th>
-      <td>,</td>
+      <td>, ,</td>
       <td>x, y = 1, 2</td>
-      <td>avoid: limited, tricky, & less performant</td>
+      <td>avoid</td>
     </tr>
     <tr>
       <th>many statements, 1 line</th>
