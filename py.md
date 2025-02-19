@@ -84,7 +84,9 @@
       <td>[x]</td>
       <td>["foo", "\\", "bar"]</td>
       <td>
-        deque
+        deque (stack/queue)
+        <br/>
+        array (strict)
         <br/>
         Pandas Series
       </td>
@@ -135,12 +137,12 @@
       <td></td>
     </tr>
     <tr>
-      <th>array</th>
+      <th>NumPy NDArray</th>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
-      <td>NumPy NDArray</td>
+      <td></td>
       <td></td>
       <td>homogenous, ordered, mutable, fixed size, n-dimensional</td>
       <td></td>
