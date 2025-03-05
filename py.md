@@ -31,7 +31,7 @@
       <td></td>
       <td>Sequence</td>
       <td>homogenous (char-only), ordered, immutable</td>
-      <td>not a collection, but many overlapping operations, so a single string may be interpreted as a char collection accidentally</td>
+      <td>a single string may be interpreted as a char collection accidentally</td>
     </tr>
     <tr>
       <th>bytes</th>
