@@ -481,4 +481,5 @@
 
 # Resources
 
-...
+- https://pyformat.info/
+- ...
