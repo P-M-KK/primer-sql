@@ -224,10 +224,20 @@
       <td></td>
     </tr>
     <tr>
+      <th>template</th>
+      <td>t""</td>
+      <td>
+        var = "bar"
+        <br/>
+        t"foo\\{var}"
+      </td>
+      <td>type = Template, containing str & Interpolation</td>
+    </tr>
+    <tr>
       <th>byte</th>
       <td>b""</td>
       <td>b"foo\x5Cbar"</td>
-      <td></td>
+      <td>type = bytes</td>
     </tr>
     <tr>
       <th>block</th>
