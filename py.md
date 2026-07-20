@@ -84,11 +84,11 @@
       <td>[x]</td>
       <td>["foo", "\\", "bar"]</td>
       <td>
-        deque (stack/queue)
-        <br/>
-        array (num/char-only)
-        <br/>
-        Pandas Series
+        <ul>
+          <li>deque (stack/queue)
+          <li>array (num/char-only)
+          <li>Pandas Series
+        </ul>
       </td>
       <td>Sequence</td>
       <td>homogenous, ordered, mutable, dynamic size</td>
@@ -122,17 +122,14 @@
         }
       </td>
       <td>
-        ChainMap (list of dicts)
-        <br/>
-        Counter (multiset)
-        <br/>
-        defaultdict
-        <br/>
-        frozendict (immutable)
-        <br/>
-        OrderedDict (ordered)
-        <br/>
-        Pandas DataFrame (ordered dict of Pandas Series)
+        <ul>
+          <li>ChainMap (list of dicts)</li>
+          <li>Counter (multiset)</li>
+          <li>defaultdict</li>
+          <li>frozendict (immutable)</li>
+          <li>OrderedDict (ordered)</li>
+          <li>Pandas DataFrame (ordered dict of Pandas Series)</li>
+        </ul>
       </td>
       <td>Mapping</td>
       <td>homogenous, unordered, mutable, dynamic size, unique key</td>
