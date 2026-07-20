@@ -128,6 +128,8 @@
         <br/>
         defaultdict
         <br/>
+        frozendict (immutable)
+        <br/>
         OrderedDict (ordered)
         <br/>
         Pandas DataFrame (ordered dict of Pandas Series)
