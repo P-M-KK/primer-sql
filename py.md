@@ -488,6 +488,36 @@
 
 ---
 
+<table>
+  <caption>Underscored Identifiers</caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Syntax/Example</th>
+      <th>Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Single Prefix</th>
+      <td>_x</td>
+      <td>Private</td>
+    </tr>
+    <tr>
+      <th>Double Prefix</th>
+      <td>__x (in a Class, becomes _Class__x)</td>
+      <td>Private but name-mangled, so avoid</td>
+    </tr>
+    <tr>
+      <th>Dunder</th>
+      <td>__x__</td>
+      <td>Internal, so avoid</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
 # Resources
 
 - https://pyformat.info/
